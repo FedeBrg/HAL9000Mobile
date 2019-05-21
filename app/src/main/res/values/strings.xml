@@ -3,6 +3,11 @@
     <string name="welcome">Welcome to HAL 9000!</string>
     <string name="startButton">Continue</string>
     <string name="welcomeHint">Type your name...</string>
+    <string name="home">Home</string>
+    <string name="rooms">Rooms</string>
+    <string name="voice">Voice</string>
+    <string name="routines">Routines</string>
+    <string name="devices">Devices</string>
 
 
 </resources>
