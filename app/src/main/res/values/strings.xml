@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">HAL 9000</string>
-    <string name ="welcome">Welcome to HAL 9000!</string>
-    <string name ="startButton">Continue</string>
+    <string name="welcome">Welcome to HAL 9000!</string>
+    <string name="startButton">Continue</string>
+    <string name="welcomeHint">Type your name...</string>
+
 
 </resources>
