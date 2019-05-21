@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_menu"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/rooms_menu"
+        android:icon="@drawable/rooms_icon"
+        android:title="@string/rooms"/>
+
+    <item
+        android:id="@+id/voice_menu"
+        android:icon="@drawable/voice_icon"
+        android:title="@string/voice"/>
+
+    <item
+        android:id="@+id/devices_menu"
+        android:icon="@drawable/devices_icon"
+        android:title="@string/devices"/>
+
+    <item
+        android:id="@+id/routines_menu"
+        android:icon="@drawable/routines_icon"
+        android:title="@string/routines"/>
+
+
+
+</menu>
