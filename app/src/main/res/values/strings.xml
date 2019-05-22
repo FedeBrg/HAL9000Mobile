@@ -8,6 +8,8 @@
     <string name="voice">Voice</string>
     <string name="routines">Routines</string>
     <string name="devices">Devices</string>
+    <string name="room_name">Room name:</string>
+    <string name="link_devices">Link devices</string>
 
 
 </resources>
