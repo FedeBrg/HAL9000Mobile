@@ -36,15 +36,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        android:hint="@string/welcomeHint"
-        android:textColorHint="@color/textColor"
-        android:textColor="@color/textColor"
-        android:backgroundTint="@color/textColor"/>
+    <!--<EditText-->
+        <!--android:id="@+id/username"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/logo"-->
+        <!--android:hint="@string/welcomeHint"-->
+        <!--android:textColorHint="@color/textColor"-->
+        <!--android:textColor="@color/textColor"-->
+        <!--android:backgroundTint="@color/textColor"/>-->
 
     <Button
         android:id="@+id/startButton"

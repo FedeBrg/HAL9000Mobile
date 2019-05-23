@@ -20,16 +20,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToMainMenu(View view){
-        EditText et = (EditText)findViewById(R.id.username);
-        String content = et.getText().toString();
-        if(content.equals("")){
-            Toast.makeText(getApplicationContext(),"You forgot to type your name!",Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Intent intent = new Intent(this,HomeScreen.class);
+//        EditText et = (EditText)findViewById(R.id.username);
+//        String content = et.getText().toString();
+//        if(content.equals("")){
+//            Toast.makeText(getApplicationContext(),"You forgot to type your name!",Toast.LENGTH_SHORT).show();
+//        }
+//        else{
+//            Intent intent = new Intent(this,HomeScreen.class);
+//
+//            intent.putExtra(username,content);
+//            startActivity(intent);
+//        }
 
-            intent.putExtra(username,content);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(this,HomeScreen.class);
+        startActivity(intent);
     }
+
+
 }

@@ -25,16 +25,6 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-//        Window window = getWindow();
-//        // clear FLAG_TRANSLUCENT_STATUS flag:
-//        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//
-//        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-//
-//        // finally change the color
-//         window.setStatusBarColor(getResources().getColor(R.color.ourBlue));
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment newFragment = new HomeFragment();
@@ -80,8 +70,8 @@ public class HomeScreen extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
+
+
 
 }

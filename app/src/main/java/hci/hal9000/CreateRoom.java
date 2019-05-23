@@ -52,15 +52,20 @@ public class CreateRoom extends AppCompatActivity {
         EditText et = (EditText)findViewById(R.id.room_name);
         content = et.getText().toString();
 
-        Button button = (Button) findViewById(R.id.create_room);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Me tocaste!",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CreateRoom.this, HomeScreen.class);
-                intent.putExtra(roomname, content);
-                startActivity(intent);
-            }
-        });
+//        Button button = (Button) findViewById(R.id.create_room);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(),"Me tocaste!",Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(CreateRoom.this, HomeScreen.class);
+//                intent.putExtra(roomname, content);
+//                startActivity(intent);
+//            }
+//        });
+
+        Toast.makeText(getApplicationContext(),"Me tocaste!",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(CreateRoom.this, HomeScreen.class);
+        intent.putExtra(roomname, content);
+        startActivity(intent);
     }
 }

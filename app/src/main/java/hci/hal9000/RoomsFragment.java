@@ -32,7 +32,7 @@ public class RoomsFragment extends Fragment {
         roomAdapter = new RoomAdapter(getActivity().getApplicationContext(), rooms);
         gridView.setAdapter(roomAdapter);
 
-        View fab = getActivity().findViewById(R.id.add_item);
+        View fab = getActivity().findViewById(R.id.fab_room);
         FloatingActionButton button = (FloatingActionButton) fab;
         if (button != null) {
             button.setOnClickListener(new View.OnClickListener() {

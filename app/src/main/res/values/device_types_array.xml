@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="device_types">
+        <item>Light</item>
+        <item>Air Conditioner</item>
+        <item>Fridge</item>
+        <item>Door</item>
+        <item>Alarm</item>
+        <item>Timer</item>
+    </string-array>
+</resources>

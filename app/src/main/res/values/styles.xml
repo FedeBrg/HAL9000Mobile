@@ -12,9 +12,13 @@
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark
-        </item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
+    </style>
+
+    <style name="MySpinnerLook"
+        parent="@android:style/Widget.TextView.SpinnerItem">
+        <item name="android:textColor">@color/ourBlue</item>
     </style>
 
 </resources>
