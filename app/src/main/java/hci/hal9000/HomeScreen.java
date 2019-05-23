@@ -35,14 +35,6 @@ public class HomeScreen extends AppCompatActivity {
 //        // finally change the color
 //         window.setStatusBarColor(getResources().getColor(R.color.ourBlue));
 
-        Intent intent = getIntent();
-        String name = intent.getStringExtra(MainActivity.username);
-
-        TextView tv = (TextView) findViewById(R.id.whoAmI);
-
-        String wel = "Welcome ";
-        tv.setText(wel.concat(name).concat("!"));
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment newFragment = new HomeFragment();
@@ -90,11 +82,6 @@ public class HomeScreen extends AppCompatActivity {
         });
 
 
-    }
-
-    public void createNewRoom(View v){
-        Intent intent = new Intent(this,CreateRoom.class);
-        startActivity(intent);
     }
 
 }
