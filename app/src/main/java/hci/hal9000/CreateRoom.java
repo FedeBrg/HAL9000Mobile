@@ -63,7 +63,7 @@ public class CreateRoom extends AppCompatActivity {
 //            }
 //        });
 
-        Toast.makeText(getApplicationContext(),"Me tocaste!",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"Me tocaste!",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(CreateRoom.this, HomeScreen.class);
         intent.putExtra(roomname, content);
         startActivity(intent);

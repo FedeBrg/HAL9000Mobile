@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 
 public class DevicesFragment extends Fragment {
@@ -34,5 +35,23 @@ public class DevicesFragment extends Fragment {
                 }
             });
         }
+
+        View lightsv = getActivity().findViewById(R.id.lights_bttn);
+        Button lights = (Button) lightsv;
+        if(lights != null){
+            lights.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), LightDetails.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
+
+//    public void lights_details(View view){
+//
+//
+//
+//    }
 }

@@ -1,6 +1,8 @@
 package hci.hal9000;
 
+import android.content.Context;
 import android.content.Intent;
+
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -31,7 +33,6 @@ public class HomeScreen extends AppCompatActivity {
         fragmentTransaction.replace(R.id.container, newFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-
 
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);

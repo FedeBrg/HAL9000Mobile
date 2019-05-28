@@ -1,10 +1,13 @@
 package hci.hal9000;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class CreateDevice extends AppCompatActivity {
 
@@ -19,6 +22,16 @@ public class CreateDevice extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setTitle("Create new device");
         }
+
+
+        Button done = (Button) findViewById(R.id.create_new_device);
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateDevice.this,HomeScreen.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
