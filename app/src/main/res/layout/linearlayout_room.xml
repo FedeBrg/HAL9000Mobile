@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/imageview_cover_art"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:scaleType="centerCrop"/>
 
     </FrameLayout>
@@ -26,8 +26,6 @@
         tools:text=""
         android:textStyle="bold"
         android:paddingTop="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
         android:gravity="center_horizontal"/>
 
 </LinearLayout>
