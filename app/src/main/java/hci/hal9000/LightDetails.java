@@ -56,6 +56,8 @@ public class LightDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LightDetails.this,HomeScreen.class);
                 startActivity(intent);
+                finish();
+
             }
         });
 
@@ -65,18 +67,18 @@ public class LightDetails extends AppCompatActivity {
         this.getWindow().findViewById(R.id.color_button).setBackgroundColor(color);
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return true;
-    }
+//    public boolean onOptionsItemSelected(MenuItem item){
+//        switch (item.getItemId()) {
+//            case android.R.id.home:
+//                finish();
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+//
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        return true;
+//    }
 
 
 }

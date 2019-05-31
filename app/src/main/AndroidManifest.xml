@@ -4,18 +4,26 @@
     package="hci.hal9000">
 
     <application
-
-
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LightDetails"></activity>
-        <activity android:name=".CreateDevice" />
-        <activity android:name=".CreateRoom" />
-        <activity android:name=".HomeScreen" />
+        <activity android:name=".FridgeDetails"
+            android:parentActivityName=".HomeScreen"></activity>
+        <activity
+            android:name=".LightDetails"
+            android:parentActivityName=".HomeScreen" />
+        <activity
+            android:name=".CreateDevice"
+            android:parentActivityName=".HomeScreen" />
+        <activity
+            android:name=".CreateRoom"
+            android:parentActivityName=".HomeScreen" />
+        <activity
+            android:name=".HomeScreen"
+            android:launchMode="singleInstance" />
         <activity
             android:name=".MainActivity"
             android:noHistory="true"

@@ -47,6 +47,18 @@ public class DevicesFragment extends Fragment {
                 }
             });
         }
+
+        View fridgev = getActivity().findViewById(R.id.fridge_bttn);
+        Button fridge = (Button) fridgev;
+        if(fridge != null){
+            fridge.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(),FridgeDetails.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
 //    public void lights_details(View view){
