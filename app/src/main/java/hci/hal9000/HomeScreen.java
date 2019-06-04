@@ -31,6 +31,12 @@ public class HomeScreen extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
+        final Fragment home = new HomeFragment();
+        final Fragment devices = new DevicesFragment();
+        final Fragment rooms = new RoomsFragment();
+        final Fragment voice = new VoiceFragment();
+        final Fragment routines = new RoutinesFragment();
+
 
 
 
@@ -44,23 +50,23 @@ public class HomeScreen extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.home_menu:
                         Toast.makeText(HomeScreen.this, "home", Toast.LENGTH_SHORT).show();
-                        newFragment = new HomeFragment();
+                        newFragment = home;
                         break;
                     case R.id.devices_menu:
                         Toast.makeText(HomeScreen.this, "devices", Toast.LENGTH_SHORT).show();
-                        newFragment = new DevicesFragment();
+                        newFragment = devices;
                         break;
                     case R.id.voice_menu:
                         Toast.makeText(HomeScreen.this, "voice", Toast.LENGTH_SHORT).show();
-                        newFragment = new VoiceFragment();
+                        newFragment = voice;
                         break;
                     case R.id.routines_menu:
                         Toast.makeText(HomeScreen.this, "routines", Toast.LENGTH_SHORT).show();
-                        newFragment = new RoutinesFragment();
+                        newFragment = routines;
                         break;
                     case R.id.rooms_menu:
                         Toast.makeText(HomeScreen.this, "rooms", Toast.LENGTH_SHORT).show();
-                        newFragment = new RoomsFragment();
+                        newFragment = rooms;
                         break;
 
                 }
