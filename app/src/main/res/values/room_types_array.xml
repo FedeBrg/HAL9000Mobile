@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="room_types">
+        <item>Adult Bedroom</item>
+        <item>Baby Bedroom</item>
+        <item>Bathroom1</item>
+        <item>Bathroom2</item>
+        <item>Dinner</item>
+        <item>Garage1</item>
+        <item>Garage2</item>
+        <item>Garden</item>
+        <item>Kids Bedroom</item>
+        <item>Kitchen</item>
+        <item>Laundry Room</item>
+        <item>Living Room</item>
+        <item>Office</item>
+        <item>Study Room</item>
+    </string-array>
+</resources>

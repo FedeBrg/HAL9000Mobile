@@ -1,6 +1,7 @@
 package hci.hal9000;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,12 +49,20 @@ public class RoomAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.linearlayout_room, null);
         }
 
-        final ImageView imageView = (ImageView)convertView.findViewById(R.id.imageview_cover_art);
+        final ImageView imageView = (ImageView)convertView.findViewById(R.id.imageview_cover_art_room);
         final TextView nameTextView = (TextView)convertView.findViewById(R.id.textview_room_name);
+        final String meta = room.getMeta();
 
-        imageView.setImageResource(R.drawable.adult_bedroom);
+        setResource(meta,imageView,parent);
+
+        //imageView.setImageResource(R.drawable.);
         nameTextView.setText(room.getName());
 
         return convertView;
+    }
+
+    private void setResource(String meta, ImageView imageView,ViewGroup parent) {
+        String resource = meta.replaceAll("[{}]","");
+        imageView.setImageResource(parent.getContext().getResources().getIdentifier(resource, "drawable", parent.getContext().getPackageName()));
     }
 }

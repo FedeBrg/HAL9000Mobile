@@ -11,10 +11,10 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageview_cover_art"
+            android:id="@+id/imageview_cover_art_room"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="fitCenter"/>
 
     </FrameLayout>
 

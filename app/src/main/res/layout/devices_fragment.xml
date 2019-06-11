@@ -6,20 +6,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <GridView
-        android:id="@+id/gridview"
+        android:id="@+id/gridviewDevices"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:columnWidth="140dp"
+        android:layout_margin="10dp"
+        android:columnWidth="100dp"
         android:gravity="center"
-        android:horizontalSpacing="10dp"
-        android:layout_marginTop="10dp"
-        android:numColumns="2"
+        android:numColumns="3"
         android:stretchMode="spacingWidthUniform"
         android:verticalSpacing="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_devices"
@@ -30,7 +31,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/ic_add_white"
-        app:layout_anchor="@id/gridview"
+        app:layout_anchor="@id/gridviewDevices"
         app:layout_anchorGravity="bottom|right|end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -45,11 +46,11 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="Lights"
-        app:layout_constraintBottom_toBottomOf="@+id/gridview"
+        app:layout_constraintBottom_toBottomOf="@+id/gridviewDevices"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gridview"
+        app:layout_constraintTop_toTopOf="@+id/gridviewDevices"
         app:layout_constraintVertical_bias="0.135"/>
 
     <Button
