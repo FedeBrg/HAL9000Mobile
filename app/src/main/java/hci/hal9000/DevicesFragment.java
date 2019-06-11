@@ -2,6 +2,7 @@ package hci.hal9000;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,6 +13,10 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
@@ -42,6 +47,10 @@ public class DevicesFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle bundle){
         super.onActivityCreated(bundle);
+
+//        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+//        NavController navController = Navigation.findNavController(getActivity(), R.id.my_nav_host_fragment);
+//        NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
 
         View fab = getActivity().findViewById(R.id.fab_devices);
@@ -125,7 +134,7 @@ public class DevicesFragment extends Fragment {
         if (response != null)
             text += " " + response.getDescription().get(0);
 
-        Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
     }
 
 

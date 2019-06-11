@@ -25,13 +25,13 @@ import androidx.navigation.ui.NavigationUI;
 
 public class HomeScreen extends AppCompatActivity {
 
-    final Fragment homeFragment = new HomeFragment();
-    final Fragment devicesFragment = new DevicesFragment();
-    final Fragment roomsFragment = new RoomsFragment();
-    final Fragment voiceFragment = new VoiceFragment();
-    final Fragment routinesFragment = new RoutinesFragment();
-    Fragment currentFragment = null;
-    final FragmentManager fragmentManager = getSupportFragmentManager();
+//    final Fragment homeFragment = new HomeFragment();
+//    final Fragment devicesFragment = new DevicesFragment();
+//    final Fragment roomsFragment = new RoomsFragment();
+//    final Fragment voiceFragment = new VoiceFragment();
+//    final Fragment routinesFragment = new RoutinesFragment();
+//    Fragment currentFragment = null;
+//    final FragmentManager fragmentManager = getSupportFragmentManager();
     BottomNavigationView bottomNavigationView;
     NavController navController;
 
@@ -132,6 +132,9 @@ public class HomeScreen extends AppCompatActivity {
 //            }
 //        }
 //    }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
