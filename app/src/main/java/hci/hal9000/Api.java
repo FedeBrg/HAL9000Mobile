@@ -33,7 +33,7 @@ public class Api {
         return instance;
     }
 
-    public String addRoom(Room room, Response.Listener<Room> listener,Response.ErrorListener errorListener){
+    public void addRoom(Room room, Response.Listener<Room> listener,Response.ErrorListener errorListener){
         String url = URL + "rooms";
         Map<String,String> headers = new HashMap<>();
         headers.put("Content-Type","application/json");
@@ -42,7 +42,7 @@ public class Api {
         request.setTag("rooms");
         requestQueue.add(request);
 
-        return uuid;
+        //return uuid;
     }
 
     public String getRooms(Response.Listener<ArrayList<Room>> listener, Response.ErrorListener errorListener){

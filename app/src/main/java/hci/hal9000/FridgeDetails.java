@@ -10,7 +10,6 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.net.NoRouteToHostException;
 
 public class FridgeDetails extends AppCompatActivity {
 

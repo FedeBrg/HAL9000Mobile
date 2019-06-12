@@ -13,7 +13,7 @@ public class ChangeIP extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_ip);
 
-        Button confirm = (Button) findViewById(R.id.confirm_ip);
+        Button confirm = findViewById(R.id.confirm_ip);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

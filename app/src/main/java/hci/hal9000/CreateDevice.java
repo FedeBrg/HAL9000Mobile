@@ -41,7 +41,7 @@ public class CreateDevice extends AppCompatActivity {
         }
 
 
-        Button done = (Button) findViewById(R.id.create_new_device);
+        Button done = findViewById(R.id.create_new_device);
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
