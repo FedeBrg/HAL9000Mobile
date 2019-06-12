@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="fridge_modes">
-        <item>Regular</item>
         <item>Party</item>
         <item>Holiday</item>
         <item>Custom</item>

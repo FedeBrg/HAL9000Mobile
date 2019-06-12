@@ -134,6 +134,9 @@ public class CreateDevice extends AppCompatActivity {
         else if(device.compareTo("door") == 0){
             return "lsf78ly0eqrjbz91";
         }
+        else if(device.compareTo("fridge") == 0){
+            return "rnizejqr2di0okho";
+        }
         else{
             return null;
         }

@@ -1,6 +1,7 @@
 package hci.hal9000;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -71,5 +72,17 @@ public class Api {
         request.setTag("devices");
         requestQueue.add(request);
         return uuid;
+    }
+
+    public String getDeviceStatus(String id,Response.Listener<Map<String,String>> listener,Response.ErrorListener errorListener){
+        String url = URL + "devices/" + id +"/getState";
+        Log.i("Test API",String.format("URL: %s ",url));
+        GsonRequest<Object, Map<String,String>> request = new GsonRequest<Object, Map<String,String>>(Request.Method.PUT, url, null, "result", new TypeToken<Map<String,String>>(){}, null, listener, errorListener);
+        String uuid = UUID.randomUUID().toString();
+        request.setTag(uuid);
+        requestQueue.add(request);
+
+        return uuid;
+
     }
 }
