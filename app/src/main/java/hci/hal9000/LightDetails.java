@@ -13,6 +13,9 @@ import android.widget.Switch;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
@@ -27,15 +30,41 @@ public class LightDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light_details);
-        String id = getIntent().getStringExtra("id");
+        final String id = getIntent().getStringExtra("id");
         Log.i("Test API",String.format("Recibi ID: %s",id));
+        sb = findViewById(R.id.light_sb);
+        onoff = findViewById(R.id.light_toggle);
+
+        Api.getInstance(getApplicationContext()).getDeviceStatus(id, new Response.Listener<Map<String,String>>() {
+            @Override
+            public void onResponse(Map<String,String> response) {
+                Log.i("Light API",String.format("Recibi %s %s %s: ",response.get("color"),response.get("status"),response.get("brightness")));
+                change_background( Integer.parseInt(response.get("color"),16));
+                sb.setProgress(Integer.parseInt(response.get("brightness")));
+                if(response.get("status").compareTo("off") == 0){
+                    // Log.i("Lights","Estan apagadas");
+
+                    onoff.setChecked(false);
+                }
+                else{
+                    onoff.setChecked(true);
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Log.i("Test API",String.format("Recibi: "));
+            }
+        });
+
 
 
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("Lights");
+            actionBar.setTitle(getIntent().getCharSequenceExtra("name"));
         }
 
 
@@ -65,6 +94,53 @@ public class LightDetails extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //String id = getIntent().getStringExtra("id");
+                //onoff = findViewById(R.id.light_toggle);
+
+                if(onoff.isChecked()){
+                    Log.i("Lights","Mande un on");
+
+                    Api.getInstance(getApplicationContext()).setDeviceStatusBoolean(id,"turnOn", new Response.Listener<Boolean>() {
+                        @Override
+                        public void onResponse(Boolean response) {
+                            Api.getInstance(getApplicationContext()).setDeviceStatusString(id,"setColor", Arrays.asList("ffff11"), new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                }
+                            });
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.i("Lights","On Error");
+
+                        }
+                    });
+
+                }
+                else{
+                    Log.i("Lights","Mande un off");
+
+                    Api.getInstance(getApplicationContext()).setDeviceStatusBoolean(id,"turnOff", new Response.Listener<Boolean>() {
+                        @Override
+                        public void onResponse(Boolean response) {
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.i("Lights","Off Error");
+
+                        }
+                    });
+
+                }
+
                 Intent intent = new Intent(LightDetails.this,HomeScreen.class);
                 startActivity(intent);
                 finish();
@@ -72,29 +148,8 @@ public class LightDetails extends AppCompatActivity {
             }
         });
 
-        sb = findViewById(R.id.light_sb);
-        onoff = findViewById(R.id.light_toggle);
 
-        Api.getInstance(getApplicationContext()).getDeviceStatus(id, new Response.Listener<Map<String,String>>() {
-            @Override
-            public void onResponse(Map<String,String> response) {
-                Log.i("Test API",String.format("Recibi %s %s %s: ",response.get("color"),response.get("status"),response.get("brightness")));
-                change_background( Integer.parseInt(response.get("color"),16));
-                sb.setProgress(Integer.parseInt(response.get("brightness")));
-                if(response.get("status").compareTo("off") == 0){
-                    onoff.setChecked(false);
-                }
-                else{
-                    onoff.setChecked(true);
-                }
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //Log.i("Test API",String.format("Recibi: "));
-            }
-        });
 
     }
 

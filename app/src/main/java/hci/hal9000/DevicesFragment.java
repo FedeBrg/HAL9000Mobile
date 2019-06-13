@@ -40,10 +40,7 @@ public class DevicesFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle bundle){
         super.onActivityCreated(bundle);
-
-//        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
-//        NavController navController = Navigation.findNavController(getActivity(), R.id.my_nav_host_fragment);
-//        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+        
 
 
         View fab = getActivity().findViewById(R.id.fab_devices);
@@ -58,29 +55,7 @@ public class DevicesFragment extends Fragment {
             });
         }
 
-        View lightsv = getActivity().findViewById(R.id.lights_bttn);
-        Button lights = (Button) lightsv;
-        if(lights != null){
-            lights.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getContext(), LightDetails.class);
-                    startActivity(intent);
-                }
-            });
-        }
 
-        View fridgev = getActivity().findViewById(R.id.fridge_bttn);
-        Button fridge = (Button) fridgev;
-        if(fridge != null){
-            fridge.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getContext(),FridgeDetails.class);
-                    startActivity(intent);
-                }
-            });
-        }
 
         gv = (GridView) getActivity().findViewById(R.id.gridviewDevices);
         devicesAdapter = new DeviceAdapter(getActivity().getApplicationContext(), devices);
@@ -148,7 +123,7 @@ public class DevicesFragment extends Fragment {
                 }
             });
         } else{
-            VolleySingleton.getInstance(getActivity().getApplicationContext()).getRequestQueue().cancelAll("devices");
+            //VolleySingleton.getInstance(getActivity().getApplicationContext()).getRequestQueue().cancelAll("devices");
         }
     }
 

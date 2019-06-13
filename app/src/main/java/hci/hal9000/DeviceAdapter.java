@@ -78,8 +78,8 @@ public class DeviceAdapter extends BaseAdapter {
         else if(device.compareTo("curtains") == 0){
             //return "eu0v2xgprrhhg41g";
         }
-        else if(device.compareTo("air_conditioner") == 0){
-            //return "li6cbv5sdlatti0j";
+        else if(device.compareTo("li6cbv5sdlatti0j") == 0){
+            intent = new Intent(view.getContext(),AirDetails.class);
         }
         else if(device.compareTo("oven") == 0){
             //return "im77xxyulpegfmv8";
@@ -101,6 +101,7 @@ public class DeviceAdapter extends BaseAdapter {
         }
 
         intent.putExtra("id",deviceO.getId());
+        intent.putExtra("name",deviceO.getName());
         view.getContext().startActivity(intent);
     }
 }

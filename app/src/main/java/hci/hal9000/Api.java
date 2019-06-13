@@ -10,13 +10,14 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 public class Api {
     private static Api instance;
     private static RequestQueue requestQueue;
-    private static String URL = "http://10.0.2.2:8080/api/";
+    private static String URL = "http://192.168.137.1:8080/api/";
 
     private Api(Context context){
         this.requestQueue = VolleySingleton.getInstance(context).getRequestQueue();
@@ -83,6 +84,39 @@ public class Api {
         requestQueue.add(request);
 
         return uuid;
-
     }
+
+    public String setDeviceStatusBoolean(String id, String action, Response.Listener<Boolean> listener, Response.ErrorListener errorListener) {
+        String url = URL + "devices/"+id+"/"+action;
+        Map<String,String> headers = new HashMap<>();
+        headers.put("Content-Type","application/json");
+        GsonRequest<Object,Boolean> request = new GsonRequest<>(Request.Method.PUT,url,null,"result",new TypeToken<Boolean>(){},headers,listener,errorListener);
+        String uuid = UUID.randomUUID().toString();
+        request.setTag(uuid);
+        requestQueue.add(request);
+        return null;
+    }
+
+    public String setDeviceStatusInteger(String id, String action, List<Integer> params, Response.Listener<Integer> listener, Response.ErrorListener errorListener){
+        String url = URL + "devices/"+id+"/"+action;
+        Map<String,String> headers = new HashMap<>();
+        headers.put("Content-Type","application/json");
+        GsonRequest<List<Integer>,Integer> request = new GsonRequest<>(Request.Method.PUT,url,params,"result",new TypeToken<Integer>(){},headers,listener,errorListener);
+        String uuid = UUID.randomUUID().toString();
+        request.setTag(uuid);
+        requestQueue.add(request);
+        return null;
+    }
+
+    public String setDeviceStatusString(String id, String action, List<String> params, Response.Listener<String> listener, Response.ErrorListener errorListener){
+        String url = URL + "devices/"+id+"/"+action;
+        Map<String,String> headers = new HashMap<>();
+        headers.put("Content-Type","application/json");
+        GsonRequest<List<String>,String> request = new GsonRequest<>(Request.Method.PUT,url,params,"result",new TypeToken<String>(){},headers,listener,errorListener);
+        String uuid = UUID.randomUUID().toString();
+        request.setTag(uuid);
+        requestQueue.add(request);
+        return null;
+    }
+
 }

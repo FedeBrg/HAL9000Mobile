@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="air_modes">
+        <item>Fan</item>
+        <item>Heat</item>
+        <item>Cold</item>
+    </string-array>
+
+    <string-array name="vertical_tilt">
+        <item>22°</item>
+        <item>45°</item>
+        <item>67°</item>
+        <item>90°</item>
+    </string-array>
+
+    <string-array name="horizontal_tilt">
+        <item>-90°</item>
+        <item>-45°</item>
+        <item>0°</item>
+        <item>45°</item>
+        <item>90°</item>
+    </string-array>
+
+    <string-array name="fan_speed">
+        <item>Auto</item>
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+</resources>
