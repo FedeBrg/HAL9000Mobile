@@ -7,13 +7,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.google.gson.Gson;
 
-import java.lang.reflect.Array;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -34,16 +43,30 @@ public class LightDetails extends AppCompatActivity {
         Log.i("Test API",String.format("Recibi ID: %s",id));
         sb = findViewById(R.id.light_sb);
         onoff = findViewById(R.id.light_toggle);
+        color_btn = findViewById(R.id.color_button);
+
+        onoff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    sb.setEnabled(isChecked);
+                    color_btn.setEnabled(isChecked);
+
+            }
+        });
 
         Api.getInstance(getApplicationContext()).getDeviceStatus(id, new Response.Listener<Map<String,String>>() {
             @Override
             public void onResponse(Map<String,String> response) {
                 Log.i("Light API",String.format("Recibi %s %s %s: ",response.get("color"),response.get("status"),response.get("brightness")));
-                change_background( Integer.parseInt(response.get("color"),16));
+                //change_background(Integer.parseInt("ff" + String.format("%x",Integer.parseInt(response.get("color")),16),16));
+                //change_background(Integer.parseInt("ff"+response.get("color"),16));
+                //BigInteger bg = new BigInteger(Integer.parseInt(response.get("color"),16) + 427819008*10);
+                change_background(Integer.parseInt(response.get("color"),16)+427819008*10);
+                //Log.i("color",String.format("%d",Integer.parseInt(response.get("color"),16)));
+
                 sb.setProgress(Integer.parseInt(response.get("brightness")));
                 if(response.get("status").compareTo("off") == 0){
                     // Log.i("Lights","Estan apagadas");
-
                     onoff.setChecked(false);
                 }
                 else{
@@ -68,7 +91,6 @@ public class LightDetails extends AppCompatActivity {
         }
 
 
-        color_btn = (Button) findViewById(R.id.color_button);
         color_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +99,7 @@ public class LightDetails extends AppCompatActivity {
                     @Override
                     public void onOk(AmbilWarnaDialog dialog, int color) {
                         // color is the color selected by the user.
+                        Log.i("color",String.format("%x",color));
                         LightDetails.this.color = color;
                         change_background(color);
                     }
@@ -94,8 +117,6 @@ public class LightDetails extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //String id = getIntent().getStringExtra("id");
-                //onoff = findViewById(R.id.light_toggle);
 
                 if(onoff.isChecked()){
                     Log.i("Lights","Mande un on");
@@ -103,7 +124,7 @@ public class LightDetails extends AppCompatActivity {
                     Api.getInstance(getApplicationContext()).setDeviceStatusBoolean(id,"turnOn", new Response.Listener<Boolean>() {
                         @Override
                         public void onResponse(Boolean response) {
-                            Api.getInstance(getApplicationContext()).setDeviceStatusString(id,"setColor", Arrays.asList("ffff11"), new Response.Listener<String>() {
+                            Api.getInstance(getApplicationContext()).setDeviceStatusString(id,"setColor", Arrays.asList(String.format("%x",color).substring(2)), new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
 
@@ -111,6 +132,24 @@ public class LightDetails extends AppCompatActivity {
                             }, new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
+                                    Log.i("Lights","Error de color");
+                                    handleError(error);
+                                }
+                            });
+                            Log.i("Lights",String.format("%d",sb.getProgress()));
+                            ArrayList<Integer> ar = new ArrayList<>();
+                            ar.add(sb.getProgress());
+                            Api.getInstance(getApplicationContext()).setDeviceStatusInteger(id, "setBrightness",ar , new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.i("Lights","Bright Error");
+                                    handleError(error);
+
                                 }
                             });
                         }
@@ -134,8 +173,8 @@ public class LightDetails extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.i("Lights","Off Error");
-
+                            //Log.i("Lights","Off Error");
+                            handleError(error);
                         }
                     });
 
@@ -157,18 +196,34 @@ public class LightDetails extends AppCompatActivity {
         this.getWindow().findViewById(R.id.color_button).setBackgroundColor(color);
     }
 
-//    public boolean onOptionsItemSelected(MenuItem item){
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                finish();
-//                return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        return true;
-//    }
+    private void handleError(VolleyError error) {
+        Error response = null;
 
+        NetworkResponse networkResponse = error.networkResponse;
+        if ((networkResponse != null) && (error.networkResponse.data != null)) {
+            try {
+                String json = new String(
+                        error.networkResponse.data,
+                        HttpHeaderParser.parseCharset(networkResponse.headers));
+
+                JSONObject jsonObject = new JSONObject(json);
+                json = jsonObject.getJSONObject("error").toString();
+
+                Gson gson = new Gson();
+                response = gson.fromJson(json, Error.class);
+            } catch (JSONException e) {
+            } catch (UnsupportedEncodingException e) {
+            }
+        }
+
+        Log.e("Testing", error.toString());
+        //String text = getResources().getString(R.string.error_message);
+        String text ;//= "Connection error."; //Parametrizar en Strings
+        if (response != null)
+            text = response.getDescription().get(0);
+
+        //Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
+        Log.i("Light",error.toString());
+    }
 
 }
