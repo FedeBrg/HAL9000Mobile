@@ -7,7 +7,7 @@
     tools:context=".CurtainDetails">
 
     <Button
-        android:id="@+id/done_door"
+        android:id="@+id/done_curtain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
