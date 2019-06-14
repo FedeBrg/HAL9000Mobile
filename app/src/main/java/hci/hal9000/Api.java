@@ -94,18 +94,18 @@ public class Api {
         String uuid = UUID.randomUUID().toString();
         request.setTag(uuid);
         requestQueue.add(request);
-        return null;
+        return uuid;
     }
 
-    public String setDeviceStatusInteger(String id, String action, List<Integer> params, Response.Listener<Integer> listener, Response.ErrorListener errorListener){
+    public String setDeviceStatusInteger(String id, String action, List<Integer> params, Response.Listener<String> listener, Response.ErrorListener errorListener){
         String url = URL + "devices/"+id+"/"+action;
         Map<String,String> headers = new HashMap<>();
         headers.put("Content-Type","application/json");
-        GsonRequest<List<Integer>,Integer> request = new GsonRequest<>(Request.Method.PUT,url,params,"result",new TypeToken<Integer>(){},headers,listener,errorListener);
+        GsonRequest<List<Integer>,String> request = new GsonRequest<>(Request.Method.PUT,url,params,"result",new TypeToken<String>(){},headers,listener,errorListener);
         String uuid = UUID.randomUUID().toString();
         request.setTag(uuid);
         requestQueue.add(request);
-        return null;
+        return uuid;
     }
 
     public String setDeviceStatusString(String id, String action, List<String> params, Response.Listener<String> listener, Response.ErrorListener errorListener){
@@ -116,7 +116,7 @@ public class Api {
         String uuid = UUID.randomUUID().toString();
         request.setTag(uuid);
         requestQueue.add(request);
-        return null;
+        return uuid;
     }
 
 }

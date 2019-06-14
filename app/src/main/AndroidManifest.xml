@@ -30,7 +30,7 @@
             android:parentActivityName=".HomeScreen" />
         <activity
             android:name=".HomeScreen"
-            android:launchMode="singleTop" />
+            android:launchMode="singleInstance" />
         <activity
             android:name=".MainActivity"
             android:noHistory="true"
