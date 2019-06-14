@@ -37,6 +37,7 @@ public class CreateDevice extends AppCompatActivity {
 
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
+
             actionBar.setTitle("Create new device");
         }
 

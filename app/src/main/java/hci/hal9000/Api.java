@@ -6,8 +6,10 @@ import android.util.Log;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -118,5 +120,35 @@ public class Api {
         requestQueue.add(request);
         return uuid;
     }
+
+    public String getRoutines(Response.Listener<ArrayList<Routine>> listener, Response.ErrorListener errorListener){
+        String url = URL + "routines";
+        GsonRequest<Object,ArrayList<Routine>> request = new GsonRequest<>(Request.Method.GET,url,null,"routines",new TypeToken<ArrayList<Routine>>(){},null,listener,errorListener);
+        String uuid = UUID.randomUUID().toString();
+        request.setTag(uuid);
+        requestQueue.add(request);
+        return uuid;
+    }
+
+    public String executeRoutine(String id, Response.Listener<ArrayList<Boolean>> listener, Response.ErrorListener errorListener){
+        String url = URL+"routines/" + id +"/execute";
+        GsonRequest<Object,ArrayList<Boolean>> request = new GsonRequest<>(Request.Method.PUT,url,null,"result",new TypeToken<ArrayList<Boolean>>(){},null,listener,errorListener);
+        String uuid = UUID.randomUUID().toString();
+        request.setTag(uuid);
+        requestQueue.add(request);
+        return uuid;
+    }
+
+
+    public String getDevice(String id,Response.Listener<Device> listener,Response.ErrorListener errorListener){
+        String url = URL + "devices/"+id;
+        GsonRequest<Object,Device> request = new GsonRequest<>(Request.Method.GET,url,null,"device",new TypeToken<Device>(){},null,listener,errorListener);
+        String uuid = UUID.randomUUID().toString();
+        request.setTag("devices");
+        requestQueue.add(request);
+        return uuid;
+    }
+
+
 
 }

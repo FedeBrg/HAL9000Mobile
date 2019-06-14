@@ -55,12 +55,7 @@ public class AirDetails extends AppCompatActivity {
         onoff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mode_spinner.setEnabled(isChecked);
-                fan_spinner.setEnabled(isChecked);
-                horizontal_spinner.setEnabled(isChecked);
-                vertical_spinner.setEnabled(isChecked);
-                airSB.setEnabled(isChecked);
-
+                setEnabled(isChecked);
             }
         });
 
@@ -234,10 +229,20 @@ public class AirDetails extends AppCompatActivity {
     private void setSwitch(String status) {
         if(status.compareTo("off") == 0){
             onoff.setChecked(false);
+            setEnabled(false);
         }
         else{
             onoff.setChecked(true);
+            setEnabled(true);
         }
+    }
+
+    public void setEnabled(boolean isChecked){
+        mode_spinner.setEnabled(isChecked);
+        fan_spinner.setEnabled(isChecked);
+        horizontal_spinner.setEnabled(isChecked);
+        vertical_spinner.setEnabled(isChecked);
+        airSB.setEnabled(isChecked);
     }
 
 

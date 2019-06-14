@@ -34,6 +34,7 @@ public class LightDetails extends AppCompatActivity {
     SeekBar sb;
     Button color_btn;
     Switch onoff;
+    int oldColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class LightDetails extends AppCompatActivity {
                 //change_background(Integer.parseInt("ff" + String.format("%x",Integer.parseInt(response.get("color")),16),16));
                 //change_background(Integer.parseInt("ff"+response.get("color"),16));
                 //BigInteger bg = new BigInteger(Integer.parseInt(response.get("color"),16) + 427819008*10);
+                oldColor = Integer.parseInt(response.get("color"),16);
                 change_background(Integer.parseInt(response.get("color"),16)+427819008*10);
                 //Log.i("color",String.format("%d",Integer.parseInt(response.get("color"),16)));
 
@@ -118,41 +120,43 @@ public class LightDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(onoff.isChecked()){
-                    Log.i("Lights","Mande un on");
 
-                    Api.getInstance(getApplicationContext()).setDeviceStatusBoolean(id,"turnOn", new Response.Listener<Boolean>() {
-                        @Override
-                        public void onResponse(Boolean response) {
-                            Api.getInstance(getApplicationContext()).setDeviceStatusString(id,"setColor", Arrays.asList(String.format("%x",color).substring(2)), new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
+                Api.getInstance(getApplicationContext()).setDeviceStatusString(id,"setColor", Arrays.asList(String.format("%x",color).substring(2)), new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
 
-                                }
-                            }, new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    Log.i("Lights","Error de color");
-                                    handleError(error);
-                                }
-                            });
-                            Log.i("Lights",String.format("%d",sb.getProgress()));
-                            ArrayList<Integer> ar = new ArrayList<>();
-                            ar.add(sb.getProgress());
-                            Api.getInstance(getApplicationContext()).setDeviceStatusInteger(id, "setBrightness",ar , new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("Lights","Error de color");
+                        handleError(error);
+                    }
+                });
+                Log.i("Lights",String.format("%d",sb.getProgress()));
+                ArrayList<Integer> ar = new ArrayList<>();
+                ar.add(sb.getProgress());
+                Api.getInstance(getApplicationContext()).setDeviceStatusInteger(id, "setBrightness",ar , new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
 
-                                }
-                            }, new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    Log.i("Lights","Bright Error");
-                                    handleError(error);
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("Lights","Bright Error");
+                        handleError(error);
 
-                                }
-                            });
-                        }
+                    }
+                });
+
+                Api.getInstance(getApplicationContext()).setDeviceStatusBoolean(id,onoff.isChecked()?"turnOn":"turnOff", new Response.Listener<Boolean>() {
+                    @Override
+                    public void onResponse(Boolean response) {
+                        Intent intent = new Intent(LightDetails.this,HomeScreen.class);
+                        startActivity(intent);
+                        finish();
+                    }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
@@ -161,28 +165,6 @@ public class LightDetails extends AppCompatActivity {
                         }
                     });
 
-                }
-                else{
-                    Log.i("Lights","Mande un off");
-
-                    Api.getInstance(getApplicationContext()).setDeviceStatusBoolean(id,"turnOff", new Response.Listener<Boolean>() {
-                        @Override
-                        public void onResponse(Boolean response) {
-
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            //Log.i("Lights","Off Error");
-                            handleError(error);
-                        }
-                    });
-
-                }
-
-                Intent intent = new Intent(LightDetails.this,HomeScreen.class);
-                startActivity(intent);
-                finish();
 
             }
         });
