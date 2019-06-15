@@ -27,19 +27,19 @@ public class OvenDetails extends AppCompatActivity {
             actionBar.setTitle("Oven");
         }
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.heat_source);
         ArrayAdapter<String> heatSource = new ArrayAdapter<>(OvenDetails.this ,
                 android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.heatSource));
         heatSource.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(heatSource);
 
-        Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+        Spinner spinner2 = (Spinner) findViewById(R.id.grill_mode);
         ArrayAdapter<String> grillMode = new ArrayAdapter<>(OvenDetails.this ,
                 android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.grillMode));
         grillMode.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(grillMode);
 
-        Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
+        Spinner spinner3 = (Spinner) findViewById(R.id.convection_mode);
         ArrayAdapter<String> convectionMode = new ArrayAdapter<>(OvenDetails.this ,
                 android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.convectionMode));
         grillMode.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -9,37 +9,32 @@
         android:id="@+id/air_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/textView19"
+        app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="8dp"
         android:text="Off"
-        app:layout_constraintEnd_toStartOf="@+id/air_switch"
-        app:layout_constraintHorizontal_bias="0.263"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/air_switch" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="88dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
         android:text="On"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/air_switch" />
 
     <Button
         android:id="@+id/done_air"
@@ -63,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:entries="@array/air_modes"
@@ -79,10 +74,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:entries="@array/fan_speed"
+        android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,10 +90,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:entries="@array/horizontal_tilt"
+        android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,10 +106,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:entries="@array/vertical_tilt"
+        android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,14 +122,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:max="18"
         app:layout_constraintEnd_toStartOf="@+id/textView22"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toTopOf="@+id/textView21" />
 
     <TextView
         android:id="@+id/textView21"
@@ -139,7 +136,7 @@
         android:layout_height="21dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="18°C"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -148,12 +145,11 @@
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="36°C"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+        app:layout_constraintTop_toTopOf="@+id/air_seek" />
 
     <TextView
         android:id="@+id/textView23"
@@ -161,14 +157,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Set mode:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/air_seek" />
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView
         android:id="@+id/textView24"
@@ -191,7 +187,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Set horizontal blades tilt: "
@@ -206,7 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Set vertical blades tilt:"
@@ -219,22 +215,18 @@
         android:id="@+id/textView28"
         android:layout_width="19dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
         android:text="°C"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/air_temp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         app:layout_constraintEnd_toStartOf="@+id/textView28"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
@@ -242,10 +234,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="8dp"
         android:text="Temperature"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
 </android.support.constraint.ConstraintLayout>
 
