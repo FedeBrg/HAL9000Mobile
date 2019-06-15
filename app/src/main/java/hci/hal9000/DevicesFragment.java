@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.GridView;
 
 import com.android.volley.NetworkResponse;
@@ -61,7 +60,7 @@ public class DevicesFragment extends Fragment {
         devicesAdapter = new DeviceAdapter(getActivity().getApplicationContext(), devices);
         gv.setAdapter(devicesAdapter);
 
-        Api.getInstance(getActivity().getApplicationContext()).getDevices(new Response.Listener<ArrayList<Device>>() {
+        Api.getInstance(getContext()).getDevices(new Response.Listener<ArrayList<Device>>() {
             @Override
             public void onResponse(ArrayList<Device> response) {
                 gv.setAdapter(new DeviceAdapter(getActivity().getApplicationContext(),response));

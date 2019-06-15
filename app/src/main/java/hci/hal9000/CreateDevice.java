@@ -1,32 +1,54 @@
 package hci.hal9000;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
+import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.barcode.Barcode;
+import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static android.support.v4.content.FileProvider.getUriForFile;
 
 public class CreateDevice extends AppCompatActivity {
     private String deviceName;
     private String deviceType;
+    private Uri photoUri;
+    private static final String TAKE_PHOTO_TAG = "Take Photo";
+    private static final int REQUEST_TAKE_PHOTO = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,16 +92,36 @@ public class CreateDevice extends AppCompatActivity {
 
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
+            case R.id.qr_menu:
+                Intent intent = new Intent(CreateDevice.this,QRReader.class);
+                startActivityForResult(intent,1);
+
+                //finish();
                 return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case (1) : {
+                if (resultCode == 1) {
+                    finish();
+                }
+                break;
+            }
+        }
+    }
+
+
+
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.qr_menu,menu);
         return true;
     }
 
@@ -141,5 +183,7 @@ public class CreateDevice extends AppCompatActivity {
             return null;
         }
     }
+
+
 
 }

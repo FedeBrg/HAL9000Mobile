@@ -59,7 +59,9 @@ public class GsonRequest<T1, T2> extends Request<T2> {
             if (token != null) {
                 JSONObject jsonObject = new JSONObject(json);
 
-                if (typeToken.getType() == Boolean.class) {
+                if (typeToken.getType() == String.class) {
+                    json = (new String(jsonObject.getString(token))).toString();
+                } else if (typeToken.getType() == Boolean.class) {
                     json = (new Boolean(jsonObject.getBoolean(token))).toString();
                 } else if (typeToken.getType() == Integer.class) {
                     json = (new Integer(jsonObject.getInt(token))).toString();
