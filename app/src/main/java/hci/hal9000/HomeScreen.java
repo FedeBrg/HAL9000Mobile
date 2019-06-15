@@ -1,5 +1,9 @@
 package hci.hal9000;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 
 import android.os.Build;
@@ -12,15 +16,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-public class HomeScreen extends AppCompatActivity {
+import java.util.Calendar;
 
+public class HomeScreen extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     NavController navController;
+    static boolean isAppRunning = true;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -37,7 +44,17 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onStop(){
+        super.onStop();
+         isAppRunning = false;
+    }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        isAppRunning = true;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

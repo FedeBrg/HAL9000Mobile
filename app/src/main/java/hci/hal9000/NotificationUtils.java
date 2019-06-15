@@ -80,7 +80,7 @@ public class NotificationUtils extends ContextWrapper {
 
         return new Notification.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.logo)
-                .setShowWhen(true)
+                //.setShowWhen(true)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setSmallIcon(android.R.drawable.stat_notify_more)
@@ -98,7 +98,7 @@ public class NotificationUtils extends ContextWrapper {
 
         return  new Notification.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.logo)
-                .setShowWhen(true)
+                //.setShowWhen(true)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setSmallIcon(android.R.drawable.stat_notify_more)

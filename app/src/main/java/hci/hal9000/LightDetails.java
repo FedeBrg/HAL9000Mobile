@@ -5,6 +5,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -35,12 +37,13 @@ public class LightDetails extends AppCompatActivity {
     Button color_btn;
     Switch onoff;
     int oldColor;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light_details);
-        final String id = getIntent().getStringExtra("id");
+        id = getIntent().getStringExtra("id");
         Log.i("Test API",String.format("Recibi ID: %s",id));
         sb = findViewById(R.id.light_sb);
         onoff = findViewById(R.id.light_toggle);
@@ -206,6 +209,26 @@ public class LightDetails extends AppCompatActivity {
 
         //Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
         Log.i("Light",error.toString());
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.history_menu,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.history:
+                Intent intent = new Intent(LightDetails.this,DeviceHistory.class);
+                //startActivityForResult(intent,1);
+                //Log.i("DeviceLogs","Menu")
+                intent.putExtra("id",id);
+                startActivity(intent);
+                //finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }
