@@ -75,14 +75,14 @@ public class DeviceAdapter extends BaseAdapter {
 
             intent =  new Intent(view.getContext(),LightDetails.class);
         }
-        else if(device.compareTo("curtains") == 0){
-            //return "eu0v2xgprrhhg41g";
+        else if(device.compareTo("eu0v2xgprrhhg41g") == 0){
+            intent= new Intent(view.getContext(),CurtainDetails.class);
         }
         else if(device.compareTo("li6cbv5sdlatti0j") == 0){
             intent = new Intent(view.getContext(),AirDetails.class);
         }
-        else if(device.compareTo("oven") == 0){
-            //return "im77xxyulpegfmv8";
+        else if(device.compareTo("im77xxyulpegfmv8") == 0){
+            intent =  new Intent(view.getContext(),OvenDetails.class);
         }
         else if(device.compareTo("timer") == 0){
             //return "ofglvd9gqX8yfl3l";
@@ -90,8 +90,9 @@ public class DeviceAdapter extends BaseAdapter {
         else if(device.compareTo("alarm") == 0){
             //return "mxztsyjzsrq7iaqc";
         }
-        else if(device.compareTo("door") == 0){
-            //return "lsf78ly0eqrjbz91";
+        else if(device.compareTo("lsf78ly0eqrjbz91") == 0){
+            intent =  new Intent(view.getContext(),DoorDetails.class);
+
         }
         else if(device.compareTo("rnizejqr2di0okho") == 0){
             intent = new Intent(view.getContext(),FridgeDetails.class);

@@ -17,7 +17,7 @@ import java.util.UUID;
 public class Api {
     private static Api instance;
     private static RequestQueue requestQueue;
-    private static String URL = "http://192.168.137.1:8080/api/";
+    private static String URL = "http://10.0.2.2:8080/api/";
 
     private Api(Context context){
         this.requestQueue = VolleySingleton.getInstance(context).getRequestQueue();

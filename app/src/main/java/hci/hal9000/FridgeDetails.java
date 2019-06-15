@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -20,10 +21,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class FridgeDetails extends AppCompatActivity {
 
+    Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,15 +43,16 @@ public class FridgeDetails extends AppCompatActivity {
         }
 
 
+
         View fridgeSeekV = findViewById(R.id.fridge_seek);
-        SeekBar fridgeSB = (SeekBar) fridgeSeekV;
+        final SeekBar fridgeSB = (SeekBar) fridgeSeekV;
         fridgeSB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int fridgeValue = progress;
                 TextView fridgeTempTV = findViewById(R.id.fridge_temp);
                 fridgeTempTV.setText(String.valueOf(fridgeValue+2));
-                Spinner spinner = findViewById(R.id.fridge_mode_spinner);
+                spinner = findViewById(R.id.fridge_mode_spinner);
                 spinner.setSelection(3);
             }
 
@@ -62,14 +68,14 @@ public class FridgeDetails extends AppCompatActivity {
         });
 
         View freezerSeekV = findViewById(R.id.freezer_seek);
-        SeekBar freezerSB = (SeekBar) freezerSeekV;
+        final SeekBar freezerSB = (SeekBar) freezerSeekV;
         freezerSB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int freezerValue = progress;
                 TextView fridgeTempTV = findViewById(R.id.freezer_temp);
                 fridgeTempTV.setText(String.valueOf(freezerValue-20));
-                Spinner spinner = findViewById(R.id.fridge_mode_spinner);
+                spinner = findViewById(R.id.fridge_mode_spinner);
                 spinner.setSelection(3);
             }
 
@@ -84,18 +90,49 @@ public class FridgeDetails extends AppCompatActivity {
             }
         });
 
+
+        Api.getInstance(getApplicationContext()).getDeviceStatus(id, new Response.Listener<Map<String,String>>() {
+            @Override
+            public void onResponse(Map<String,String> response) {
+                freezerSB.setProgress(Integer.parseInt(response.get("freezerTemperature")));
+                fridgeSB.setProgress(Integer.parseInt(response.get("temperature")));
+                String temp=response.get("mode");
+
+                spinner.setSelection((temp.compareTo("default")==0)?3:((temp.compareTo("Party")==0)?1:2));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Log.i("Test API",String.format("Recibi: "));
+            }
+        });
+
+
+
         Button done = findViewById(R.id.done_fridge);
-        /*done.setOnClickListener(new View.OnClickListener() {
+        done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Api.getInstance(getApplicationContext()).setDeviceStatusBoolean(id, openClose.isChecked() ? "close" : "open", new Response.Listener<Boolean>() {
+                Api.getInstance(getApplicationContext()).setDeviceStatusInteger(id,"setFreezerTemperature",new ArrayList<Integer>(freezerSB.getProgress()), new Response.Listener<String>() {
                     @Override
-                    public void onResponse(Boolean response) {
-                        Api.getInstance(getApplicationContext()).setDeviceStatusBoolean(id, lockUnlock.isChecked() ? "lock" : "unlock", new Response.Listener<Boolean>() {
+                    public void onResponse(String response) {
+                        Api.getInstance(getApplicationContext()).setDeviceStatusInteger(id, "setTemperature",new ArrayList<Integer>(fridgeSB.getProgress()), new Response.Listener<String>() {
                             @Override
-                            public void onResponse(Boolean response) {
+                            public void onResponse(String response) {
+                                List<String> lista=new ArrayList<String>();
+                                lista.add(spinner.getSelectedItem().toString());
+                                Api.getInstance(getApplicationContext()).setDeviceStatusString(id, "setMode",lista, new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
 
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        handleError(error);
+                                    }
+                                });
                             }
                         }, new Response.ErrorListener() {
                             @Override
@@ -115,7 +152,7 @@ public class FridgeDetails extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });*/
+        });
     }
 
 

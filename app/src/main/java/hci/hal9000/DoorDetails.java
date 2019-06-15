@@ -33,11 +33,6 @@ public class DoorDetails extends AppCompatActivity {
 
         openClose = findViewById(R.id.door_switch);
         lockUnlock = findViewById(R.id.lock_switch);
-        //mode_spinner = findViewById(R.id.air_mode_spinner);
-        //fan_spinner = findViewById(R.id.fan_speed_spinner);
-        //horizontal_spinner = findViewById(R.id.horizontal_blades_spinner);
-        //vertical_spinner = findViewById(R.id.vertical_blades_spinner);
-        //airTempTV = findViewById(R.id.air_temp);
         final String id = getIntent().getStringExtra("id");
 
 
@@ -55,7 +50,6 @@ public class DoorDetails extends AppCompatActivity {
 
             }
         });
-
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,19 +86,19 @@ public class DoorDetails extends AppCompatActivity {
 
     private void setDoorSwitch(String status) {
         if(status.compareTo("closed") == 0){
-            openClose.setChecked(false);
+            openClose.setChecked(true);
         }
         else{
-            openClose.setChecked(true);
+            openClose.setChecked(false);
         }
     }
 
     private void setLockSwitch(String status) {
-        if(status.compareTo("unloked") == 0){
-            lockUnlock.setChecked(false);
+        if(status.compareTo("locked") == 0){
+            lockUnlock.setChecked(true);
         }
         else{
-            lockUnlock.setChecked(true);
+            lockUnlock.setChecked(false);
         }
     }
 
