@@ -53,7 +53,7 @@ public class FridgeDetails extends AppCompatActivity {
                 TextView fridgeTempTV = findViewById(R.id.fridge_temp);
                 fridgeTempTV.setText(String.valueOf(fridgeValue+2));
                 spinner = findViewById(R.id.fridge_mode_spinner);
-                spinner.setSelection(3);
+                spinner.setSelection(2);
             }
 
             @Override
@@ -76,7 +76,7 @@ public class FridgeDetails extends AppCompatActivity {
                 TextView fridgeTempTV = findViewById(R.id.freezer_temp);
                 fridgeTempTV.setText(String.valueOf(freezerValue-20));
                 spinner = findViewById(R.id.fridge_mode_spinner);
-                spinner.setSelection(3);
+                spinner.setSelection(2);
             }
 
             @Override
@@ -98,7 +98,7 @@ public class FridgeDetails extends AppCompatActivity {
                 fridgeSB.setProgress(Integer.parseInt(response.get("temperature")));
                 String temp=response.get("mode");
 
-                spinner.setSelection((temp.compareTo("default")==0)?3:((temp.compareTo("Party")==0)?1:2));
+                spinner.setSelection((temp.compareTo("default")==0)?2:((temp.compareTo("Party")==0)?0:1));
             }
         }, new Response.ErrorListener() {
             @Override
