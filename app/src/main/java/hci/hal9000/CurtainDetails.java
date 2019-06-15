@@ -1,6 +1,7 @@
 package hci.hal9000;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
@@ -24,15 +26,21 @@ import java.util.Map;
 public class CurtainDetails extends AppCompatActivity {
     Switch openClose;
     ProgressBar progressBar;
+    TextView progressText;
+    int progressValue;
+    String id;
+    int auxValue;
+    Thread updater;
+    Handler progressBarHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_curtain_details);
 
+        progressText=findViewById(R.id.curtain_percent);
         openClose = findViewById(R.id.curtain_switch);
-        final String id = getIntent().getStringExtra("id");
+        id = getIntent().getStringExtra("id");
         progressBar = findViewById(R.id.curtain_progress);
-        progressBar.setMax(100);
 
         Button done = findViewById(R.id.done_curtain);
 
@@ -40,7 +48,8 @@ public class CurtainDetails extends AppCompatActivity {
             @Override
             public void onResponse(Map<String, String> response) {
                 setCurtainSwitch(response.get("status"));
-                setProgressBar(response.get("level"));
+                setProgressBar(Integer.parseInt(response.get("level")));
+                launchBarThread(Integer.parseInt(response.get("level")));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -50,6 +59,7 @@ public class CurtainDetails extends AppCompatActivity {
         });
 
         done.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
@@ -63,6 +73,9 @@ public class CurtainDetails extends AppCompatActivity {
                         handleError(error);
                     }
                 });
+                if(updater.isAlive()){
+                updater.interrupt();
+                }
                 Intent intent = new Intent(CurtainDetails.this, HomeScreen.class);
                 startActivity(intent);
                 finish();
@@ -71,16 +84,21 @@ public class CurtainDetails extends AppCompatActivity {
     }
 
 
-    private void setProgressBar(String status){
-        progressBar.setProgress(Integer.parseInt(status));
+    private void setProgressBar(int status){
+        progressBar.setProgress(status);
+        progressText.setText(String.valueOf(status));
+        progressValue=status;
     }
+
+
+
 
     private void setCurtainSwitch(String status)     {
         if((status.compareTo("closed")== 0)|| (status.compareTo("closing")==0)){
-            openClose.setChecked(false);
+            openClose.setChecked(true);
         }
         else{
-            openClose.setChecked(true);
+            openClose.setChecked(false);
         }
     }
 
@@ -107,4 +125,51 @@ public class CurtainDetails extends AppCompatActivity {
         if (response != null)
             text = response.getDescription().get(0);
     }
+
+    private void launchBarThread(int value){
+        progressValue=value;
+        updater = new Thread(new Runnable() {
+            public void run() {
+                while (progressValue < 100 && progressValue > 0) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    getStatus();
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    // Updating the progress bar
+                    progressBarHandler.post(new Runnable() {
+                        public void run() {
+                            progressBar.setProgress(progressValue);
+                        }
+                    });
+                }
+                // performing operation if file is progress is cmpleted,
+                if (progressValue == 100 || progressValue== 0) {
+                    // sleeping for 1 second after operation completed
+                    updater.interrupt();
+                }
+            }
+        });
+        updater.start();
+    }
+
+    void getStatus(){
+        Api.getInstance(getApplicationContext()).getDeviceStatus(id, new Response.Listener<Map<String, String>>() {
+            @Override
+            public void onResponse(Map<String, String> response) {
+                setProgressBar(Integer.parseInt(response.get("level")));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+    }
 }
+
