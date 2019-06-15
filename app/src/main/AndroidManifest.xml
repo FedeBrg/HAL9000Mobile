@@ -5,6 +5,16 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -13,8 +23,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AirDetails" android:parentActivityName=".HomeScreen" />
-        <activity android:name=".OvenDetails" android:parentActivityName=".HomeScreen" />
+        <activity android:name=".QRReader"></activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".AirDetails"
+            android:parentActivityName=".HomeScreen" />
+        <activity
+            android:name=".OvenDetails"
+            android:parentActivityName=".HomeScreen" />
         <activity android:name=".ChangeIP" />
         <activity
             android:name=".FridgeDetails"
