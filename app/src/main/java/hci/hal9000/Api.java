@@ -42,7 +42,7 @@ public class Api {
         headers.put("Content-Type","application/json");
         GsonRequest<Room,Room> request = new GsonRequest<>(Request.Method.POST,url,room,"room",new TypeToken<Room>(){},headers,listener,errorListener);
         String uuid = UUID.randomUUID().toString();
-        request.setTag("rooms");
+        request.setTag(uuid);
         requestQueue.add(request);
 
         //return uuid;
@@ -52,7 +52,7 @@ public class Api {
         String url = URL + "rooms/";
         GsonRequest<Object,ArrayList<Room>> request = new GsonRequest<>(Request.Method.GET,url,null,"rooms",new TypeToken<ArrayList<Room>>(){}, null, listener,errorListener);
         String uuid = UUID.randomUUID().toString();
-        request.setTag("rooms");
+        request.setTag(uuid);
         requestQueue.add(request);
         return uuid;
     }
@@ -63,7 +63,7 @@ public class Api {
         headers.put("Content-Type","application/json");
         GsonRequest<Device,Device> request = new GsonRequest<>(Request.Method.POST,url,device,"device",new TypeToken<Device>(){},headers,listener,errorListener);
         String uuid = UUID.randomUUID().toString();
-        request.setTag("rooms");
+        request.setTag(uuid);
         requestQueue.add(request);
         return uuid;
     }
@@ -72,7 +72,7 @@ public class Api {
         String url = URL + "devices/";
         GsonRequest<Object,ArrayList<Device>> request = new GsonRequest<>(Request.Method.GET,url,null,"devices",new TypeToken<ArrayList<Device>>(){},null,listener,errorListener);
         String uuid = UUID.randomUUID().toString();
-        request.setTag("devices");
+        request.setTag(uuid);
         requestQueue.add(request);
         return uuid;
     }
@@ -144,7 +144,16 @@ public class Api {
         String url = URL + "devices/"+id;
         GsonRequest<Object,Device> request = new GsonRequest<>(Request.Method.GET,url,null,"device",new TypeToken<Device>(){},null,listener,errorListener);
         String uuid = UUID.randomUUID().toString();
-        request.setTag("devices");
+        request.setTag(uuid);
+        requestQueue.add(request);
+        return uuid;
+    }
+
+    public String getDeviceLogs(String id,Response.Listener<ArrayList<DeviceLog>> listener,Response.ErrorListener errorListener){
+        String url = URL + "devices/"+id+"/logs/limit/10/offset/{offset}";
+        GsonRequest<Object,ArrayList<DeviceLog>> request = new GsonRequest<>(Request.Method.GET,url,null,"deviceLogs",new TypeToken<ArrayList<DeviceLog>>(){},null,listener,errorListener);
+        String uuid = UUID.randomUUID().toString();
+        request.setTag(uuid);
         requestQueue.add(request);
         return uuid;
     }

@@ -96,11 +96,26 @@ public class CreateDevice extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.qr_menu:
                 Intent intent = new Intent(CreateDevice.this,QRReader.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
+
+                //finish();
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case (1) : {
+                if (resultCode == 1) {
+                    finish();
+                }
+                break;
+            }
+        }
     }
 
 

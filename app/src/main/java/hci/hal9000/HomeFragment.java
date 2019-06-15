@@ -29,22 +29,22 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        Api.getInstance(getContext()).getEvents(new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                Log.i("Events",response);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                //Log.i("Events","Error de events");
-//                handleError(error);
-//            }
-//        });
-//    }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Api.getInstance(getContext()).getDeviceLogs("2fcbc84a5a2c1b63",new Response.Listener<ArrayList<DeviceLog>>() {
+            @Override
+            public void onResponse(ArrayList<DeviceLog> response) {
+                Log.i("LogsDevice",response.get(0).getDeviceId());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Log.i("Events","Error de events");
+                handleError(error);
+            }
+        });
+    }
 
     private void handleError(VolleyError error) {
         Error response = null;
@@ -66,7 +66,8 @@ public class HomeFragment extends Fragment {
             }
         }
 
-        Log.i("Testing", error.toString());
+        Log.i("Logs" +
+                "", error.toString());
         //String text = getResources().getString(R.string.error_message);
         String text = "Connection error."; //Parametrizar en Strings
         if (response != null)
