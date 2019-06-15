@@ -150,7 +150,6 @@ public class QRReader extends AppCompatActivity {
                                         tokenanterior = "";
                                     }
                                 } catch (InterruptedException e) {
-                                    // TODO Auto-generated catch block
                                     Log.e("Error", "Waiting didnt work!!");
                                     e.printStackTrace();
                                 }
