@@ -3,11 +3,13 @@ package hci.hal9000;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.google.gson.Gson;
+import com.android.volley.VolleyError;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Array;
@@ -20,7 +22,8 @@ import java.util.UUID;
 public class Api {
     private static Api instance;
     private static RequestQueue requestQueue;
-    private static String URL = "http://192.168.137.1:8080/api/";
+    private static String URL = "http://10.0.2.2:8080/api/";
+    private static Context myContext;
 
     private Api(Context context){
         this.requestQueue = VolleySingleton.getInstance(context).getRequestQueue();
@@ -43,6 +46,7 @@ public class Api {
     public static synchronized Api getInstance(Context context){
         if(instance == null){
             instance = new Api(context);
+            myContext = context;
         }
         SharedPreferences pref = context.getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
         URL = pref.getString("ip",URL);
@@ -91,6 +95,24 @@ public class Api {
         return uuid;
     }
 
+    public String getEvents(Response.Listener<ArrayList<Event>> listener, Response.ErrorListener errorListener){
+        String url = URL + "devices/events";
+        String uuid = UUID.randomUUID().toString();
+        GetEvents request = new GetEvents(Request.Method.GET, url, listener, errorListener);
+        request.setTag(uuid);
+        requestQueue.add(request);
+        return uuid;
+    }
+
+    public String getDeviceEvent(String id,Response.Listener<ArrayList<Event>> listener, Response.ErrorListener errorListener){
+        String url = URL + "devices/" +id + "/events";
+        String uuid = UUID.randomUUID().toString();
+        GetEvents request = new GetEvents(Request.Method.GET, url, listener, errorListener);
+        request.setTag(uuid);
+        requestQueue.add(request);
+        return uuid;
+    }
+
     public String getDeviceStatus(String id,Response.Listener<Map<String,String>> listener,Response.ErrorListener errorListener){
         String url = URL + "devices/" + id +"/getState";
         Log.i("Test API",String.format("URL: %s ",url));
@@ -98,7 +120,6 @@ public class Api {
         String uuid = UUID.randomUUID().toString();
         request.setTag(uuid);
         requestQueue.add(request);
-
         return uuid;
     }
 
@@ -110,6 +131,7 @@ public class Api {
         String uuid = UUID.randomUUID().toString();
         request.setTag(uuid);
         requestQueue.add(request);
+        Toast.makeText(myContext, "Device updated!", Toast.LENGTH_LONG).show();
         return uuid;
     }
 
@@ -121,6 +143,7 @@ public class Api {
         String uuid = UUID.randomUUID().toString();
         request.setTag(uuid);
         requestQueue.add(request);
+        Toast.makeText(myContext, "Device updated!", Toast.LENGTH_LONG).show();
         return uuid;
     }
 
@@ -132,6 +155,7 @@ public class Api {
         String uuid = UUID.randomUUID().toString();
         request.setTag(uuid);
         requestQueue.add(request);
+        Toast.makeText(myContext, "Device updated!", Toast.LENGTH_LONG).show();
         return uuid;
     }
 
@@ -171,7 +195,5 @@ public class Api {
         requestQueue.add(request);
         return uuid;
     }
-
-
 
 }

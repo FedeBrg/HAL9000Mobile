@@ -3,22 +3,11 @@ package hci.hal9000;
 import java.util.Map;
 
 public class Event {
-    String id;
-    String data;
+    String deviceId;
+    String event;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
+    public Event(String deviceId, String event){
+        this.deviceId = deviceId;
+        this.event = event;
     }
 }

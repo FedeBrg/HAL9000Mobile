@@ -24,7 +24,7 @@ public class GsonRequest<T1, T2> extends Request<T2> {
     private final Map<String, String> headers;
     private final Response.Listener<T2> listener;
 
-    public GsonRequest(int method, String url, T1 data, String token, TypeToken<T2> typeToken, Map<String, String> headers,
+    GsonRequest(int method, String url, T1 data, String token, TypeToken<T2> typeToken, Map<String, String> headers,
                        Response.Listener<T2> listener, Response.ErrorListener errorListener) {
         super(method, url, errorListener);
         this.data = data;
