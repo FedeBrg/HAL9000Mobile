@@ -81,7 +81,8 @@ public class DeviceAdapter extends BaseAdapter {
         else if(device.compareTo("li6cbv5sdlatti0j") == 0){
             intent = new Intent(view.getContext(),AirDetails.class);
         }
-        else if(device.compareTo("oven") == 0){
+        else if(device.compareTo("im77xxyulpegfmv8") == 0){
+            intent = new Intent(view.getContext(),OvenDetails.class);
             //return "im77xxyulpegfmv8";
         }
         else if(device.compareTo("timer") == 0){
