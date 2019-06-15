@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="air_modes">
+        <item>Ventilador</item>
+        <item>Calor</item>
+        <item>Frio</item>
+    </string-array>
+
+    <string-array name="room_types">
+        <item>Cuarto de adultos</item>
+        <item>Cuarto Bebe</item>
+        <item>Baño 1</item>
+        <item>Baño 2</item>
+        <item>Comedor</item>
+        <item>Garaje1</item>
+        <item>Garaje2</item>
+        <item>Jardín</item>
+        <item>Cuarto Niños</item>
+        <item>Cocina</item>
+        <item>Lavadero</item>
+        <item>Sala de Estar</item>
+        <item>Oficina</item>
+        <item>Estudio</item>
+    </string-array>
+
+    <string name="app_name">HAL 9000</string>
+    <string name="welcome">Bienvenido a HAL9000</string>
+    <string name="startButton">Continuar</string>
+    <string name="welcomeHint">Ingrese su Nombre ...,</string>
+    <string name="home">Home</string>
+    <string name="rooms">Habitaciones</string>
+    <string name="voice">Voz</string>
+    <string name="routines">Routinas</string>
+    <string name="devices">Dispositivos</string>
+    <string name="room_name">Nombre Habitacion:</string>
+    <string name="link_devices">Enlazar dispositivo</string>
+    <string name="device_type">Tipo de dispositivo</string>
+    <string name="device_name">Nombre dispositivo:</string>
+    <string name="link_to_room">Enlazar a habitación</string>
+
+    <string-array name="heatSource">
+        <item>Convencional</item>
+        <item>Abajo</item>
+        <item>Arriba</item>
+    </string-array>
+
+    <string-array name="grillMode">
+        <item>Apagado</item>
+        <item>Económico</item>
+        <item>Completo</item>
+    </string-array>
+
+    <string-array name="convectionMode">
+        <item>Apagado</item>
+        <item>Económico</item>
+        <item>Completo</item>
+    </string-array>
+
+    <string-array name="fridge_modes">
+        <item>Fiesta</item>
+        <item>Vacaciones</item>
+        <item>Personalizado</item>
+    </string-array>
+
+    <string-array name="device_types">
+        <item name="@+id/light">Luz</item>
+        <item name="@+id/air_conditioner">Aire Acondicionado</item>
+        <item name="@+id/fridge">Heladera</item>
+        <item name="@+id/door">Puerta</item>
+        <item>Alarma</item>
+        <item>Temporizador</item>
+    </string-array>
+
+    <string name="done">Hecho!</string>
+    <string name="pick_icon">Seleccionar icono</string>
+    <string name="temperature">Temperatura:</string>
+    <string name="grillMode">Modo Parrilla</string>
+    <string name="convectionMode">Modo Conveccion</string>
+    <string name="heatSource">Fuente de Calor</string>
+    <string name="verticalTilt">Inclinacion vertical:</string>
+    <string name="horizontalTilt">Inclinacion horizontal:</string>
+    <string name="open">Abrir</string>
+    <string name="close">Cerrar</string>
+    <string name="progress">Progreso</string>
+    <string name="closed">Cerrado</string>
+    <string name="locked">Bloqueado</string>
+    <string name="unlocked">Desbloqueado</string>
+    <string name="mode">Modo:</string>
+    <string name="intensity">Intensidad:</string>
+    <string name="exec">Ejecutar</string>
+    <string name="createnewroom">Crear nuevo dispositivo</string>
+    <string name="connectionError">Connection Error</string>
+    <string name="takephoto">Tomar una foto</string>
+    <string name="fridge">Heladera</string>
+    <string name="oven">Oven</string>
+    <string name="qrreader">Lector de QR</string>
+</resources>
+

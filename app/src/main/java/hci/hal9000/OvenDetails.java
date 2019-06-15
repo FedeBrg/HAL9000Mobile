@@ -51,7 +51,7 @@ public class OvenDetails extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(name);
+            actionBar.setTitle(getString(R.string.oven));
         }
 
         onoff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

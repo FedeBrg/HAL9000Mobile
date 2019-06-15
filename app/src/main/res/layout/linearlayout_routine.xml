@@ -61,7 +61,7 @@
         android:id="@+id/executeRoutine"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:text="Execute"
+        android:text="@string/exec"
         android:background="@color/ourBlue"
         android:textColor="#ffffff"/>
 

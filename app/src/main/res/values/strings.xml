@@ -32,5 +32,27 @@
         <item>Off</item>
     </string-array>
 
-
+    <string name="done">Done!</string>
+    <string name="pick_icon">Pick an icon</string>
+    <string name="temperature">Temperature:</string>
+    <string name="grillMode">Grill Mode</string>
+    <string name="convectionMode">Convection Mode</string>
+    <string name="heatSource">Heat Source</string>
+    <string name="verticalTilt">Set vertical blades tilt:</string>
+    <string name="horizontalTilt">Set horizontal blades tilt:</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="progress">Progress</string>
+    <string name="closed">Closed</string>
+    <string name="locked">Locked</string>
+    <string name="unlocked">Unlocked</string>
+    <string name="mode">Mode:</string>
+    <string name="intensity">Intensity:</string>
+    <string name="exec">Execute</string>
+    <string name="createnewroom">Create new room</string>
+    <string name="connectionError">Connection Error</string>
+    <string name="takephoto">Take Photo</string>
+    <string name="fridge">Fridge</string>
+    <string name="oven">Oven</string>
+    <string name="qrreader">QRReader</string>
 </resources>

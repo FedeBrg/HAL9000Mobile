@@ -39,7 +39,7 @@ public class FridgeDetails extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("Fridge");
+            actionBar.setTitle(getString(R.string.fridge));
         }
 
 
