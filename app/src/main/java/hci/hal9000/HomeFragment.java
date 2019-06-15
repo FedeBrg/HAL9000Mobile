@@ -32,18 +32,18 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Api.getInstance(getContext()).getDeviceLogs("2fcbc84a5a2c1b63",new Response.Listener<ArrayList<DeviceLog>>() {
-            @Override
-            public void onResponse(ArrayList<DeviceLog> response) {
-                Log.i("LogsDevice",response.get(0).getDeviceId());
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //Log.i("Events","Error de events");
-                handleError(error);
-            }
-        });
+//        Api.getInstance(getContext()).getDeviceLogs("2fcbc84a5a2c1b63",new Response.Listener<ArrayList<DeviceLog>>() {
+//            @Override
+//            public void onResponse(ArrayList<DeviceLog> response) {
+//                Log.i("LogsDevice",response.get(0).getDeviceId());
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                //Log.i("Events","Error de events");
+//                handleError(error);
+//            }
+//        });
     }
 
     private void handleError(VolleyError error) {
