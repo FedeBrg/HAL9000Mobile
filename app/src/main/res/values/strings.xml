@@ -15,21 +15,21 @@
     <string name="link_to_room">Link to room</string>
 
     <string-array name="heatSource">
-        <item>Source1</item>
-        <item>Source2</item>
-        <item>Source3</item>
+        <item>Conventional</item>
+        <item>Bottom</item>
+        <item>Top</item>
     </string-array>
 
     <string-array name="grillMode">
-        <item>GrillMode1</item>
-        <item>GrillMode2</item>
-        <item>GrillMode3</item>
+        <item>Normal</item>
+        <item>Eco</item>
+        <item>Off</item>
     </string-array>
 
     <string-array name="convectionMode">
-        <item>convectionMode1</item>
-        <item>convectionMode2</item>
-        <item>convectionMode3</item>
+        <item>Large</item>
+        <item>Eco</item>
+        <item>Off</item>
     </string-array>
 
 

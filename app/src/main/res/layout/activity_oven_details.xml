@@ -7,7 +7,7 @@
 
 
     <Spinner
-        android:id="@+id/heat_source"
+        android:id="@+id/heat_source_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:entries="@array/oven_modes"
+        android:entries="@array/heatSource"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
     <Spinner
-        android:id="@+id/grill_mode"
+        android:id="@+id/grill_mode_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -31,7 +31,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:entries="@array/grill_modes"
+        android:entries="@array/grillMode"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
     <Spinner
-        android:id="@+id/convection_mode"
+        android:id="@+id/convection_mode_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -47,7 +47,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:entries="@array/convection_modes"
+        android:entries="@array/convectionMode"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -62,7 +62,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:max="18"
+        android:max="140"
         app:layout_constraintEnd_toStartOf="@+id/textView39"
         app:layout_constraintStart_toEndOf="@+id/textView38"
         app:layout_constraintTop_toTopOf="@+id/textView38" />
@@ -140,7 +140,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView35" />
 
     <TextView
-        android:id="@+id/temperature_text"
+        android:id="@+id/oven_temp_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -190,7 +190,7 @@
         android:layout_marginTop="24dp"
         android:text="Grill Mode"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heat_source" />
+        app:layout_constraintTop_toBottomOf="@+id/heat_source_spinner" />
 
     <TextView
         android:id="@+id/textView42"
@@ -201,6 +201,6 @@
         android:layout_marginTop="24dp"
         android:text="Convection Mode"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grill_mode" />
+        app:layout_constraintTop_toBottomOf="@+id/grill_mode_spinner" />
 
 </android.support.constraint.ConstraintLayout>

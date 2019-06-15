@@ -43,7 +43,7 @@ public class AirDetails extends AppCompatActivity {
         horizontal_spinner = findViewById(R.id.horizontal_blades_spinner);
         vertical_spinner = findViewById(R.id.vertical_blades_spinner);
         airTempTV = findViewById(R.id.air_temp);
-         id = getIntent().getStringExtra("id");
+        id = getIntent().getStringExtra("id");
         String name = getIntent().getStringExtra("name");
 
         ActionBar actionBar = getSupportActionBar();
