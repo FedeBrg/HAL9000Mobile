@@ -43,12 +43,6 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity
-            android:name=".AirDetails"
-            android:parentActivityName=".HomeScreen" />
-        <activity
-            android:name=".OvenDetails"
-            android:parentActivityName=".HomeScreen" />
         <activity android:name=".ChangeIP" />
         <activity
             android:name=".FridgeDetails"
