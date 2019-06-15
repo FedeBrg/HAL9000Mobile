@@ -39,7 +39,7 @@ public class CreateRoom extends AppCompatActivity {
 
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("Create new room");
+            actionBar.setTitle(R.string.createnewroom);
         }
 
 
@@ -109,10 +109,11 @@ public class CreateRoom extends AppCompatActivity {
 
         Log.e("Testing", error.toString());
         //String text = getResources().getString(R.string.error_message);
-        String text = "Connection error."; //Parametrizar en Strings
+        String text = getString(R.string.connectionError);
         if (response != null)
             text += " " + response.getDescription().get(0);
 
         Toast.makeText(this, text, Toast.LENGTH_LONG).show();
     }
 }
+

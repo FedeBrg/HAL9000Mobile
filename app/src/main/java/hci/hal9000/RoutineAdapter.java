@@ -141,7 +141,7 @@ public class RoutineAdapter extends BaseAdapter {
 
         Log.i("Testing", error.toString());
         //String text = getResources().getString(R.string.error_message);
-        String text = "Connection error."; //Parametrizar en Strings
+        String text = "Connection error.";//getString(R.string.connectionError); //Parametrizar en Strings
         if (response != null)
             text += " " + response.getDescription().get(0);
 

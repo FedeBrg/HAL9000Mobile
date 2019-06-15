@@ -97,7 +97,7 @@ public class DevicesFragment extends Fragment {
 
         Log.e("Testing", error.toString());
         //String text = getResources().getString(R.string.error_message);
-        String text = "Connection error."; //Parametrizar en Strings
+        String text =getString(R.string.connectionError); //Parametrizar en Strings
         if (response != null)
             text += " " + response.getDescription().get(0);
 

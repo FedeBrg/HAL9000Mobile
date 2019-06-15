@@ -24,7 +24,7 @@ public class OvenDetails extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("Oven");
+            actionBar.setTitle(getString(R.string.oven));
         }
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);

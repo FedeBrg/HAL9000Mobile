@@ -46,7 +46,7 @@ public class CreateDevice extends AppCompatActivity {
     private String deviceName;
     private String deviceType;
     private Uri photoUri;
-    private static final String TAKE_PHOTO_TAG = "Take Photo";
+    private static final String TAKE_PHOTO_TAG = "Take Photo"; //getString(R.string.takephoto);
     private static final int REQUEST_TAKE_PHOTO = 1;
 
 
@@ -59,7 +59,7 @@ public class CreateDevice extends AppCompatActivity {
 
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("Create new device");
+            actionBar.setTitle(getString(R.string.createnewroom));
         }
 
 
@@ -147,7 +147,7 @@ public class CreateDevice extends AppCompatActivity {
 
         Log.e("Testing", error.toString());
         //String text = getResources().getString(R.string.error_message);
-        String text = "Connection error."; //Parametrizar en Strings
+        String text = getString(R.string.connectionError);
         if (response != null)
             text += " " + response.getDescription().get(0);
 

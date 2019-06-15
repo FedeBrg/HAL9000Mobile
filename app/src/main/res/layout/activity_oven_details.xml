@@ -57,7 +57,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"
         android:background="@color/ourBlue"
-        android:text="Done!"
+        android:text="@string/done"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,7 +122,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="116dp"
-        android:text="Temperature:"
+        android:text="@string/temperature"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -135,7 +135,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Grill Mode"
+        android:text="@string/grillMode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +150,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="256dp"
         android:layout_marginRight="256dp"
-        android:text="Convection Mode"
+        android:text="@string/convectionMode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -165,7 +165,7 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Heat Source"
+        android:text="@string/heatSource"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.025"
         app:layout_constraintStart_toStartOf="parent"
@@ -219,3 +219,6 @@
 
 
 </android.support.constraint.ConstraintLayout>
+
+
+

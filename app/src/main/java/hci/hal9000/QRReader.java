@@ -41,7 +41,7 @@ public class QRReader extends AppCompatActivity {
 
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle("QR Reader");
+            actionBar.setTitle(getString(R.string.qrreader));
         }
 
         cameraView = (SurfaceView) findViewById(R.id.camera_view);
