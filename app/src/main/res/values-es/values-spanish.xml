@@ -89,10 +89,27 @@
     <string name="intensity">Intensidad:</string>
     <string name="exec">Ejecutar</string>
     <string name="createnewroom">Crear nuevo dispositivo</string>
-    <string name="connectionError">Connection Error</string>
     <string name="takephoto">Tomar una foto</string>
     <string name="fridge">Heladera</string>
     <string name="oven">Oven</string>
     <string name="qrreader">Lector de QR</string>
+    <string name="notif">Holis %1$s</string>
+    <string name="notificationTitle">Noticias desde casa!</string>
+    <string name="externNotification">El dispositivo %1$s ha sido modificado</string>
+    <string name="connectionError">Error en la conexión:</string>
+    <string name="statusChanged">El estado de %1$s ha sido modificado</string>
+    <string name="temperatureChanged">La temperatura de %1$s ha sido modificada</string>
+    <string name="heatChanged">El aire acondicionado %1$s está en modo calor</string>
+    <string name="grillChanged">El horno %1$s está en modo parrila</string>
+    <string name="convectionChanged">%1$s está en modo convección</string>
+    <string name="colorChanged">Cambió el color de %1$s</string>
+    <string name="brightnessChanged">Cambió el brillo de %1$s</string>
+    <string name="modeChanged">%1$s cambió de modo</string>
+    <string name="verticalSwingChanged">El movimiento vertical de %1$s fue modificado</string>
+    <string name="horizontalSwingChanged">El movimiento horizontal de %1$s fue modificado</string>
+    <string name="fanSpeedChanged">La velocidad del ventilador de %1$s fue modificada</string>
+    <string name="lockChanged">La cerradura de %1$s fue modificada</string>
+    <string name="freezerTemperatureChanged">La temperatura del freezer de %1$s fue modificada</string>
+    <string name="deviceUpdated">Dispositivo actualizado!</string>
 </resources>
 

@@ -1,5 +1,6 @@
 package hci.hal9000;
 
+import hci.hal9000.R;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
@@ -24,7 +25,6 @@ public class CheckNotification extends BroadcastReceiver {
     final static String GROUP_DEVICES = "group_devices";
     int NOTIFICATION_ID = 1;
     Context myContext;
-    String deviceName;
     Event event;
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -37,11 +37,14 @@ public class CheckNotification extends BroadcastReceiver {
                         Log.i("RESPONSE-SIZE", String.format("%d",response.size()));
                         for(int i = 0; i < response.size(); i++){
                             event = response.get(i);
+                            final ArrayList<String> desiredDevices = getActiveNotifications();
                             Api.getInstance(context).getDevice(event.deviceId, new Response.Listener<Device>() {
                                 @Override
                                 public void onResponse(Device response) {
-                                    sendNotification(myContext, "Noticias en tu casa!", getMessage(response.getName(), event.event));
-
+                                    if(desiredDevices.contains(response.getTypeId())){
+                                        String toSend = myContext.getString(R.string.notificationTitle);
+                                        sendNotification(myContext, toSend, getMessage(response.getName(), event.event));
+                                    }
                                 }
                             }, new Response.ErrorListener() {
                                 @Override
@@ -60,14 +63,13 @@ public class CheckNotification extends BroadcastReceiver {
                             Api.getInstance(context).getDevice(event.deviceId, new Response.Listener<Device>() {
                                 @Override
                                 public void onResponse(Device response) {
-                                    Toast.makeText(myContext, String.format("Device %s has been modified!", response.getName()), Toast.LENGTH_SHORT).show();
+                                    String toSend = myContext.getString(R.string.externNotification, response.getName());
+                                    Toast.makeText(myContext, toSend, Toast.LENGTH_SHORT).show();
 
                                 }
                             }, new Response.ErrorListener() {
                                 @Override
-                                public void onErrorResponse(VolleyError error) {
-
-                                }
+                                public void onErrorResponse(VolleyError error) {}
                             });
 
                         }
@@ -126,57 +128,40 @@ public class CheckNotification extends BroadcastReceiver {
 
         Log.e("Testing", error.toString());
         //String text = getResources().getString(R.string.error_message);
-        String text = "Connection error."; //Parametrizar en Strings
+        String text = myContext.getString(R.string.connectionError);
         if (response != null)
             text += " " + response.getDescription().get(0);
 
     }
 
-    //CHEQUEAR SI ESE DEVICE QUE TENGO EN EL ONRESPONSE ESTA RETORNANDO BIEN,
-    //EN LA APP LLEGA CON UN NULL
-    private void getDeviceName(Context context, String deviceId){
-        Api.getInstance(context).getDevice(deviceId, new Response.Listener<Device>() {
-            @Override
-            public void onResponse(Device response) {
-                Log.i("DEVICE", response.getName());
-            }
-
-    }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                handleError(error);
-            }
-        });
-    }
-
     private String getMessage(String device, String event){
         switch(event){
             case "statusChanged":
-                return String.format("%s status has been modified", device);
+                return myContext.getString(R.string.statusChanged, device);
             case "temperatureChanged":
-                return String.format("%s temperature has been modified", device);
+                return myContext.getString(R.string.temperatureChanged, device);
             case "heatChanged":
-                return String.format("%s heat has been modified", device);
+                return myContext.getString(R.string.heatChanged, device);
             case "grillChanged":
-                return String.format("%s grill has been modified", device);
+                return myContext.getString(R.string.grillChanged, device);
             case "convectionChanged":
-                return String.format("%s grill has been modified", device);
+                return myContext.getString(R.string.convectionChanged, device);
             case "colorChanged":
-                return String.format("The color of %s has been modified", device);
+                return myContext.getString(R.string.colorChanged, device);
             case "brightnessChanged":
-                return String.format("The brightness of %s has been modified", device);
+                return myContext.getString(R.string.brightnessChanged, device);
             case "modeChanged":
-                return String.format("The mode of %s has been modified", device);
+                return myContext.getString(R.string.modeChanged, device);
             case "verticalSwingChanged":
-                return String.format("The vertical swing of %s has been modified", device);
+                return myContext.getString(R.string.verticalSwingChanged, device);
             case "horizontalSwingChanged":
-                return String.format("The horizontal swing of %s has been modified", device);
+                return myContext.getString(R.string.horizontalSwingChanged, device);
             case "fanSpeedChanged":
-                return String.format("The fan speed of %s has been modified", device);
+                return myContext.getString(R.string.fanSpeedChanged, device);
             case "lockChanged":
-                return String.format("%s lock has been modified", device);
+                return myContext.getString(R.string.lockChanged, device);
             case "freezerTemperatureChanged":
-                return String.format("%s freezer temperature has been modified", device);
+                return myContext.getString(R.string.freezerTemperatureChanged, device);
             default:
                 return "";
 
