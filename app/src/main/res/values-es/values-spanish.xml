@@ -8,25 +8,25 @@
 
     <string-array name="room_types">
         <item>Cuarto de adultos</item>
-        <item>Cuarto Bebe</item>
-        <item>Baño 1</item>
-        <item>Baño 2</item>
+        <item>Cuarto de bebe</item>
+        <item>Baño1</item>
+        <item>Baño2</item>
         <item>Comedor</item>
         <item>Garaje1</item>
         <item>Garaje2</item>
         <item>Jardín</item>
-        <item>Cuarto Niños</item>
+        <item>Cuarto de niños</item>
         <item>Cocina</item>
         <item>Lavadero</item>
         <item>Sala de Estar</item>
         <item>Oficina</item>
-        <item>Estudio</item>
+        <item>Sala de estudio</item>
     </string-array>
 
     <string name="app_name">HAL 9000</string>
     <string name="welcome">Bienvenido a HAL9000</string>
     <string name="startButton">Continuar</string>
-    <string name="welcomeHint">Ingrese su Nombre ...,</string>
+    <string name="welcomeHint">Ingrese su nombre</string>
     <string name="home">Home</string>
     <string name="rooms">Habitaciones</string>
     <string name="voice">Voz</string>
@@ -67,8 +67,8 @@
         <item name="@+id/air_conditioner">Aire Acondicionado</item>
         <item name="@+id/fridge">Heladera</item>
         <item name="@+id/door">Puerta</item>
-        <item>Alarma</item>
-        <item>Temporizador</item>
+        <item name="@+id/alarm">Alarma</item>
+        <item name="@+id/timer">Temporizador</item>
     </string-array>
 
     <string name="done">Hecho!</string>

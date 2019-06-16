@@ -68,7 +68,7 @@ public class CreateRoom extends AppCompatActivity {
         roomName = ((EditText) findViewById(R.id.room_name)).getText().toString();
         roomType = ((Spinner) findViewById(R.id.room_type)).getSelectedItem().toString().toLowerCase().replaceAll(" ","_");
         Room room = new Room();
-        room.setMeta(roomType);
+        room.setMeta(getRoomMeta(roomType));
         room.setName(roomName);
         Api.getInstance(getApplicationContext()).addRoom(room, new Response.Listener<Room>() {
             @Override
@@ -85,6 +85,41 @@ public class CreateRoom extends AppCompatActivity {
         Intent intent = new Intent(CreateRoom.this, HomeScreen.class);
         //intent.putExtra(roomname, content);
         startActivity(intent);
+    }
+
+    private String getRoomMeta(String roomType){
+        switch(roomType) {
+            case "cuarto_de_adultos":
+                return "adult_bedroom";
+            case "cuarto_de_bebe":
+                return "baby_bedroom";
+            case "baño1":
+                return "bathroom1";
+            case "baño2":
+                return "bathroom2";
+            case "comedor":
+                return "dinner";
+            case "garaje1":
+                return "garage1";
+            case "garaje2":
+                return "garage2";
+            case "jardín":
+                return "garden";
+            case "cuarto_de_niños":
+                return "kids_bedroom";
+            case "cocina":
+                return "kitchen";
+            case "lavadero":
+                return "laundry_room";
+            case "sala_de_estar":
+                return "living_room";
+            case "oficina":
+                return "office";
+            case "sala_de_estudio":
+                return "study_room";
+            default:
+                return roomType;
+        }
     }
 
     private void handleError(VolleyError error) {
