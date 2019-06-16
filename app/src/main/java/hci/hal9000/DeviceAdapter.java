@@ -97,9 +97,6 @@ public class DeviceAdapter extends BaseAdapter {
         else if(device.compareTo("rnizejqr2di0okho") == 0){
             intent = new Intent(view.getContext(),FridgeDetails.class);
         }
-        else{
-            //return null;
-        }
 
         intent.putExtra("id",deviceO.getId());
         intent.putExtra("name",deviceO.getName());

@@ -2,6 +2,7 @@ package hci.hal9000;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,11 @@ public class ChangeIP extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_ip);
 
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle("IP Settings");
+        }
 
         Button confirm = findViewById(R.id.confirm_ip);
         confirm.setOnClickListener(new View.OnClickListener() {

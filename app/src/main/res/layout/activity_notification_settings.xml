@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Allow notifications:          "
+            android:gravity="left"/>
+        <Switch
+            android:id="@+id/notification_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right" />
+
+    </LinearLayout>
+
+    <CheckBox android:id="@+id/checkbox_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lights"
+        android:onClick="onCheckboxClicked"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
+
+    <CheckBox android:id="@+id/checkbox_oven"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Oven"
+        android:onClick="onCheckboxClicked"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
+
+    <CheckBox android:id="@+id/checkbox_air"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Air Conditioner"
+        android:onClick="onCheckboxClicked"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
+
+    <CheckBox android:id="@+id/checkbox_fridge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fridge"
+        android:onClick="onCheckboxClicked"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
+
+    <CheckBox android:id="@+id/checkbox_door"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Door"
+        android:onClick="onCheckboxClicked"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
+
+    <CheckBox android:id="@+id/checkbox_curtains"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Curtains"
+        android:onClick="onCheckboxClicked"
+        android:button="@null"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
+
+
+</LinearLayout>

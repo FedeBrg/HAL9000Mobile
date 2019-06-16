@@ -74,6 +74,8 @@ public class HomeScreen extends AppCompatActivity {
                 return true;
 
             case R.id.notification_overflow:
+                Intent intent2 = new Intent(HomeScreen.this,NotificationSettings.class);
+                startActivity(intent2);
                 return true;
 
             default:

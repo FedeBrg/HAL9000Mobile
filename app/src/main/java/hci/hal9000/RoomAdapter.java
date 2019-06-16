@@ -61,7 +61,14 @@ public class RoomAdapter extends BaseAdapter {
     }
 
     private void setResource(String meta, ImageView imageView,ViewGroup parent) {
-        String resource = meta.replaceAll("[{}]","");
+        String resource_aux = meta.replaceAll("[{}]","");
+        String resource = translateResource(resource_aux);
         imageView.setImageResource(parent.getContext().getResources().getIdentifier(resource, "drawable", parent.getContext().getPackageName()));
+    }
+
+    private String translateResource(String resource_aux) {
+
+
+        return resource_aux;
     }
 }
