@@ -24,7 +24,6 @@ public class CheckNotification extends BroadcastReceiver {
     final static String GROUP_DEVICES = "group_devices";
     int NOTIFICATION_ID = 1;
     Context myContext;
-    String deviceName;
     Event event;
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -37,11 +36,13 @@ public class CheckNotification extends BroadcastReceiver {
                         Log.i("RESPONSE-SIZE", String.format("%d",response.size()));
                         for(int i = 0; i < response.size(); i++){
                             event = response.get(i);
+                            final ArrayList<String> desiredDevices = getActiveNotifications();
                             Api.getInstance(context).getDevice(event.deviceId, new Response.Listener<Device>() {
                                 @Override
                                 public void onResponse(Device response) {
-                                    sendNotification(myContext, "Noticias en tu casa!", getMessage(response.getName(), event.event));
-
+                                    if(desiredDevices.contains(response.getTypeId())){
+                                        sendNotification(myContext, "Noticias en casa!", getMessage(response.getName(), event.event));
+                                    }
                                 }
                             }, new Response.ErrorListener() {
                                 @Override
@@ -65,9 +66,7 @@ public class CheckNotification extends BroadcastReceiver {
                                 }
                             }, new Response.ErrorListener() {
                                 @Override
-                                public void onErrorResponse(VolleyError error) {
-
-                                }
+                                public void onErrorResponse(VolleyError error) {}
                             });
 
                         }
