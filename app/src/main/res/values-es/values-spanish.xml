@@ -111,5 +111,9 @@
     <string name="lockChanged">La cerradura de %1$s fue modificada</string>
     <string name="freezerTemperatureChanged">La temperatura del freezer de %1$s fue modificada</string>
     <string name="deviceUpdated">Dispositivo actualizado!</string>
+    <string name="beforeListen">Aquí podrá ver lo que dijo</string>
+    <string name="listening">Escuchando..</string>
+    <string name="microphone">No podés ser escuchado sin antes darnos permiso!</string>
+    <string name="helpSound">Mantené apretado el botón para hablar</string>
 </resources>
 

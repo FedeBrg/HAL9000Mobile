@@ -7,4 +7,6 @@
     <color name="ourBlue">#1976D2</color>
     <color name="textColor">#FFFFFF</color>
     <color name="black">#000000</color>
+
+    <color name="colorButtonActive">#1bea95</color>
 </resources>

@@ -72,4 +72,8 @@
     <string name="lockChanged">%1$s lock has been modified</string>
     <string name="freezerTemperatureChanged">Freezer temperature of %1$s has been modified</string>
     <string name="deviceUpdated">Device updated!</string>
+    <string name="beforeListen">You will see input here</string>
+    <string name="listening">Listening..</string>
+    <string name="microphone">You cannot be listened if you do not give us permission!</string>
+    <string name="helpSound">Keep pressed the button to speak</string>
 </resources>
