@@ -3,10 +3,14 @@ package hci.hal9000;
 import hci.hal9000.R;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Icon;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -96,9 +100,17 @@ public class CheckNotification extends BroadcastReceiver {
             notificationManager.createNotificationChannel(channel);
         }
 
+        Intent gotoIntent = new Intent();
+        gotoIntent.setClassName(myContext, "hci.hal9000.HomeScreen");
+        PendingIntent contentIntent = PendingIntent.getActivity(myContext,
+                (int) (Math.random() * 100), gotoIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
         NotificationCompat.Builder notification = new NotificationCompat.Builder(context, "default")
                 .setContentTitle(title)
                 .setContentText(message)
+                .setContentIntent(contentIntent)
+                .setAutoCancel(true)
                 .setGroup(GROUP_DEVICES)
                 .setSmallIcon(R.mipmap.ic_launcher_round);
 
