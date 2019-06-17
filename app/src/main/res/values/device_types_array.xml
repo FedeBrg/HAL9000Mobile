@@ -5,8 +5,9 @@
         <item android:id="@+id/air_conditioner">Air Conditioner</item>
         <item android:id="@+id/fridge">Fridge</item>
         <item android:id="@+id/door">Door</item>
-        <item>Alarm</item>
-        <item>Timer</item>
+
+        <item>Oven</item>
+        <item>Curtains</item>
     </string-array>
 </resources>
 

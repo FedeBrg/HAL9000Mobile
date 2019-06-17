@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,13 +68,18 @@ public class RoomsFragment extends Fragment {
         Api.getInstance(getActivity().getApplicationContext()).getRooms(new Response.Listener<ArrayList<Room>>() {
             @Override
             public void onResponse(ArrayList<Room> response) {
+                getActivity().getWindow().getDecorView().setBackgroundResource(R.drawable.white_back);
+
                 gv.setAdapter(new RoomAdapter(getActivity().getApplicationContext(),response));
                 Log.i("TestApi","Entre al onResponse");
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                handleError(error);
+                FragmentActivity act = getActivity();
+                if(act != null){
+                    act.getWindow().getDecorView().setBackgroundResource(R.drawable.no_internet_background);
+                }
             }
         });
 

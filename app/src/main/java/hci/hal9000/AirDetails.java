@@ -5,6 +5,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -243,6 +245,26 @@ public class AirDetails extends AppCompatActivity {
         horizontal_spinner.setEnabled(isChecked);
         vertical_spinner.setEnabled(isChecked);
         airSB.setEnabled(isChecked);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.history_menu,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.history:
+                Intent intent = new Intent(AirDetails.this,DeviceHistory.class);
+                //startActivityForResult(intent,1);
+                //Log.i("DeviceLogs","Menu")
+                intent.putExtra("id",id);
+                startActivity(intent);
+                //finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

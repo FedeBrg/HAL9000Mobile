@@ -4,15 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.google.gson.Gson;
-import com.android.volley.VolleyError;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -131,7 +126,8 @@ public class Api {
         String uuid = UUID.randomUUID().toString();
         request.setTag(uuid);
         requestQueue.add(request);
-        Toast.makeText(myContext, "Device updated!", Toast.LENGTH_LONG).show();
+        String toSend = myContext.getString(R.string.deviceUpdated);
+        Toast.makeText(myContext, toSend, Toast.LENGTH_LONG).show();
         return uuid;
     }
 
@@ -143,7 +139,8 @@ public class Api {
         String uuid = UUID.randomUUID().toString();
         request.setTag(uuid);
         requestQueue.add(request);
-        Toast.makeText(myContext, "Device updated!", Toast.LENGTH_LONG).show();
+        String toSend = myContext.getString(R.string.deviceUpdated);
+        Toast.makeText(myContext, toSend, Toast.LENGTH_LONG).show();
         return uuid;
     }
 
@@ -155,7 +152,8 @@ public class Api {
         String uuid = UUID.randomUUID().toString();
         request.setTag(uuid);
         requestQueue.add(request);
-        Toast.makeText(myContext, "Device updated!", Toast.LENGTH_LONG).show();
+        String toSend = myContext.getString(R.string.deviceUpdated);
+        Toast.makeText(myContext, toSend, Toast.LENGTH_LONG).show();
         return uuid;
     }
 

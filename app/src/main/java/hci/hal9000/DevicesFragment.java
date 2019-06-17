@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,20 +58,25 @@ public class DevicesFragment extends Fragment {
 
 
 
-        gv = (GridView) getActivity().findViewById(R.id.gridviewDevices);
+        gv = getActivity().findViewById(R.id.gridviewDevices);
         devicesAdapter = new DeviceAdapter(getActivity().getApplicationContext(), devices);
         gv.setAdapter(devicesAdapter);
 
         Api.getInstance(getContext()).getDevices(new Response.Listener<ArrayList<Device>>() {
             @Override
             public void onResponse(ArrayList<Device> response) {
+                getActivity().getWindow().getDecorView().setBackgroundResource(R.drawable.white_back);
+
                 gv.setAdapter(new DeviceAdapter(getActivity().getApplicationContext(),response));
                 Log.i("TestApi","Entre al onResponse");
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                handleError(error);
+                FragmentActivity act = getActivity();
+                if(act != null){
+                    act.getWindow().getDecorView().setBackgroundResource(R.drawable.no_internet_background);
+                }
             }
         });
     }

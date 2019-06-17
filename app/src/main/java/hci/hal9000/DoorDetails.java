@@ -1,9 +1,12 @@
 package hci.hal9000;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -25,6 +28,8 @@ import java.util.Map;
 public class DoorDetails extends AppCompatActivity {
     Switch openClose;
     Switch lockUnlock;
+    String id;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +38,14 @@ public class DoorDetails extends AppCompatActivity {
 
         openClose = findViewById(R.id.door_switch);
         lockUnlock = findViewById(R.id.lock_switch);
-        final String id = getIntent().getStringExtra("id");
+        id = getIntent().getStringExtra("id");
+        name = getIntent().getStringExtra("name");
 
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle(name);
+        }
 
         Button done = findViewById(R.id.done_door);
 
@@ -125,4 +136,26 @@ public class DoorDetails extends AppCompatActivity {
         if (response != null)
             text = response.getDescription().get(0);
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.history_menu,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.history:
+                Intent intent = new Intent(DoorDetails.this,DeviceHistory.class);
+                //startActivityForResult(intent,1);
+                //Log.i("DeviceLogs","Menu")
+                intent.putExtra("id",id);
+                startActivity(intent);
+                //finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

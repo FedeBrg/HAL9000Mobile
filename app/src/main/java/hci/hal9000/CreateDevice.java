@@ -1,5 +1,6 @@
 package hci.hal9000;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,10 +26,6 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
-import com.google.android.gms.vision.CameraSource;
-import com.google.android.gms.vision.Frame;
-import com.google.android.gms.vision.barcode.Barcode;
-import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -69,15 +66,19 @@ public class CreateDevice extends AppCompatActivity {
             public void onClick(View v) {
                 deviceName = ((EditText) findViewById(R.id.device_name)).getText().toString();
                 deviceType = ((Spinner) findViewById(R.id.device_type)).getSelectedItem().toString().toLowerCase().replaceAll(" ","_");
+
                 Device device = new Device();
-                device.setMeta(deviceType);
+                String[] toPut = getTypeID(deviceType);
+                device.setMeta(toPut[1]);
+                device.setTypeId(toPut[0]);
                 device.setName(deviceName);
-                device.setTypeId(getTypeID(deviceType));
+
                 Api.getInstance(getApplicationContext()).addDevice(device, new Response.Listener<Device>() {
                     @Override
                     public void onResponse(Device response) {
-                        Intent intent = new Intent(CreateDevice.this,HomeScreen.class);
-                        startActivity(intent);
+//                        Intent intent = new Intent(CreateDevice.this,HomeScreen.class);
+//                        startActivity(intent);
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -85,12 +86,15 @@ public class CreateDevice extends AppCompatActivity {
                         handleError(error);
                     }
                 });
+            finish();
 
             }
+
         });
 
 
     }
+
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -154,30 +158,49 @@ public class CreateDevice extends AppCompatActivity {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show();
     }
 
-    String getTypeID(String device){
-        if(device.compareTo("light") == 0){
-            return "go46xmbqeomjrsjr";
+    String[] getTypeID(String device){
+        String[] toReturn = new String[2];
+        if(device.compareTo("light") == 0 || device.compareTo("luz") == 0){
+            toReturn[0] = "go46xmbqeomjrsjr";
+            toReturn[1] = "light";
+            return toReturn;
+        }
+
+        else if(device.compareTo("oven") == 0 || device.compareTo("horno") == 0){
+            toReturn[0] = "im77xxyulpegfmv8";
+            toReturn[1] = "oven";
+            return toReturn;
         }
         else if(device.compareTo("curtains") == 0){
-            return "eu0v2xgprrhhg41g";
+            toReturn[0] = "eu0v2xgprrhhg41g";
+            toReturn[1] = "curtains";
+            return toReturn;
         }
-        else if(device.compareTo("air_conditioner") == 0){
-            return "li6cbv5sdlatti0j";
+
+        else if(device.compareTo("air_conditioner") == 0 || device.compareTo("aire_acondicionado") == 0){
+            toReturn[0] = "li6cbv5sdlatti0j";
+            toReturn[1] = "air_conditioner";
+            return toReturn;
         }
-        else if(device.compareTo("oven") == 0){
-            return "im77xxyulpegfmv8";
+        else if(device.compareTo("timer") == 0 || device.compareTo("temporizador") == 0){
+            toReturn[0] = "ofglvd9gqX8yfl3l";
+            toReturn[1] = "timer";
+            return toReturn;
         }
-        else if(device.compareTo("timer") == 0){
-            return "ofglvd9gqX8yfl3l";
+        else if(device.compareTo("alarm") == 0 || device.compareTo("alarma") == 0){
+            toReturn[0] = "mxztsyjzsrq7iaqc";
+            toReturn[1] = "alarm";
+            return toReturn;
         }
-        else if(device.compareTo("alarm") == 0){
-            return "mxztsyjzsrq7iaqc";
+        else if(device.compareTo("door") == 0 || device.compareTo("puerta") == 0){
+            toReturn[0] = "lsf78ly0eqrjbz91";
+            toReturn[1] = "door";
+            return toReturn;
         }
-        else if(device.compareTo("door") == 0){
-            return "lsf78ly0eqrjbz91";
-        }
-        else if(device.compareTo("fridge") == 0){
-            return "rnizejqr2di0okho";
+        else if(device.compareTo("fridge") == 0 || device.compareTo("heladera") == 0){
+            toReturn[0] = "rnizejqr2di0okho";
+            toReturn[1] = "fridge";
+            return toReturn;
         }
         else{
             return null;

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -48,10 +50,11 @@ public class OvenDetails extends AppCompatActivity {
         String name = getIntent().getStringExtra("name");
         done=findViewById(R.id.done_oven);
 
+
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(getString(R.string.oven));
+            actionBar.setTitle(name);
         }
 
         onoff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -143,6 +146,26 @@ public class OvenDetails extends AppCompatActivity {
 
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.history_menu,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.history:
+                Intent intent = new Intent(OvenDetails.this,DeviceHistory.class);
+                //startActivityForResult(intent,1);
+                //Log.i("DeviceLogs","Menu")
+                intent.putExtra("id",id);
+                startActivity(intent);
+                //finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void setSwitch(String status) {

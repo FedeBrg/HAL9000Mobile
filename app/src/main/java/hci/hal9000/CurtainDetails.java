@@ -2,9 +2,12 @@ package hci.hal9000;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -32,6 +35,7 @@ public class CurtainDetails extends AppCompatActivity {
     int auxValue;
     Thread updater;
     Handler progressBarHandler = new Handler();
+    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,13 @@ public class CurtainDetails extends AppCompatActivity {
         openClose = findViewById(R.id.curtain_switch);
         id = getIntent().getStringExtra("id");
         progressBar = findViewById(R.id.curtain_progress);
+        name = getIntent().getStringExtra("name");
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle(name);
+        }
 
         Button done = findViewById(R.id.done_curtain);
 
@@ -170,6 +181,26 @@ public class CurtainDetails extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.history_menu,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.history:
+                Intent intent = new Intent(CurtainDetails.this,DeviceHistory.class);
+                //startActivityForResult(intent,1);
+                //Log.i("DeviceLogs","Menu")
+                intent.putExtra("id",id);
+                startActivity(intent);
+                //finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
 

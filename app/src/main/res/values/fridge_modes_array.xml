@@ -2,7 +2,7 @@
 <resources>
     <string-array name="fridge_modes">
         <item>Party</item>
-        <item>Holiday</item>
+        <item>Vacation</item>
         <item>Custom</item>
     </string-array>
 </resources>

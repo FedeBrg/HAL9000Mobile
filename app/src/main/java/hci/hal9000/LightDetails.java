@@ -1,5 +1,6 @@
 package hci.hal9000;
 
+import hci.hal9000.R;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,23 +13,17 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
-
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
-
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
-
 import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class LightDetails extends AppCompatActivity {
@@ -54,7 +49,6 @@ public class LightDetails extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     sb.setEnabled(isChecked);
                     color_btn.setEnabled(isChecked);
-
             }
         });
 
@@ -99,11 +93,11 @@ public class LightDetails extends AppCompatActivity {
         color_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 AmbilWarnaDialog dialog = new AmbilWarnaDialog(v.getContext(), 000000, new AmbilWarnaDialog.OnAmbilWarnaListener() {
                     @Override
                     public void onOk(AmbilWarnaDialog dialog, int color) {
                         // color is the color selected by the user.
+                        Log.i("TOAST", getString(R.string.notif, "XD"));
                         Log.i("color",String.format("%x",color));
                         LightDetails.this.color = color;
                         change_background(color);
@@ -122,8 +116,6 @@ public class LightDetails extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Api.getInstance(getApplicationContext()).setDeviceStatusString(id,"setColor", Arrays.asList(String.format("%x",color).substring(2)), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -167,14 +159,8 @@ public class LightDetails extends AppCompatActivity {
 
                         }
                     });
-
-
             }
         });
-
-
-
-
     }
 
     void change_background(int color){

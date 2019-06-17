@@ -70,5 +70,22 @@
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
+        <Button
+            android:id="@+id/done_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/done"
+            android:textColor="#ffffff"
+            android:backgroundTint="@color/ourBlue"
+            android:layout_gravity="end"/>
+    </LinearLayout>
+
+
 
 </LinearLayout>

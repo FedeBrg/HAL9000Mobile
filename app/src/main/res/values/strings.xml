@@ -50,9 +50,26 @@
     <string name="intensity">Intensity:</string>
     <string name="exec">Execute</string>
     <string name="createnewroom">Create new room</string>
-    <string name="connectionError">Connection Error</string>
     <string name="takephoto">Take Photo</string>
     <string name="fridge">Fridge</string>
     <string name="oven">Oven</string>
     <string name="qrreader">QRReader</string>
+    <string name="notif">Hello %1$s</string>
+    <string name="notificationTitle">News from home!</string>
+    <string name="externNotification">Device %1$s has been modified</string>
+    <string name="connectionError">Connection error:</string>
+    <string name="statusChanged">%1$s status has been modified</string>
+    <string name="temperatureChanged">%1$s temperature has been modified</string>
+    <string name="heatChanged">Air conditioner %1$s is in heat mode</string>
+    <string name="grillChanged">Oven %1$s is in grill mode</string>
+    <string name="convectionChanged">%1$s is now in convection mode</string>
+    <string name="colorChanged">%1$s color has been redefined</string>
+    <string name="brightnessChanged">%1$s brightness has been redefined</string>
+    <string name="modeChanged">%1$s has changed mode</string>
+    <string name="verticalSwingChanged">The vertical swing of %1$s has been modified</string>
+    <string name="horizontalSwingChanged">The horizontal swing of %1$s has been modified</string>
+    <string name="fanSpeedChanged">The fan speed of %1$s has been modified</string>
+    <string name="lockChanged">%1$s lock has been modified</string>
+    <string name="freezerTemperatureChanged">Freezer temperature of %1$s has been modified</string>
+    <string name="deviceUpdated">Device updated!</string>
 </resources>

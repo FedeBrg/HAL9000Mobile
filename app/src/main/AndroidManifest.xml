@@ -55,10 +55,12 @@
             android:parentActivityName=".HomeScreen" />
         <activity
             android:name=".CreateDevice"
-            android:parentActivityName=".HomeScreen" />
+            android:parentActivityName=".HomeScreen"
+            android:noHistory="true"/>
         <activity
             android:name=".CreateRoom"
-            android:parentActivityName=".HomeScreen" />
+            android:parentActivityName=".HomeScreen"
+            android:noHistory="true"/>
         <activity
             android:name=".HomeScreen"
             android:launchMode="singleInstance" />

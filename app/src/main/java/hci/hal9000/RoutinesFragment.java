@@ -3,6 +3,7 @@ package hci.hal9000;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,12 +40,16 @@ public class RoutinesFragment extends Fragment {
         Api.getInstance(getContext()).getRoutines(new Response.Listener<ArrayList<Routine>>() {
             @Override
             public void onResponse(ArrayList<Routine> response) {
+                getActivity().getWindow().getDecorView().setBackgroundResource(R.drawable.white_back);
                 gv.setAdapter(new RoutineAdapter(getContext(),response));
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("Routines","Routines NO OK");
+                FragmentActivity act = getActivity();
+                if(act != null){
+                    act.getWindow().getDecorView().setBackgroundResource(R.drawable.no_internet_background);
+                }
 
             }
         });

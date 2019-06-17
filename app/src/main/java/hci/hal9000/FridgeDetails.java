@@ -5,7 +5,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -29,30 +32,67 @@ import java.util.Map;
 public class FridgeDetails extends AppCompatActivity {
 
     Spinner spinner;
+    SeekBar fridgeSB;
+    SeekBar freezerSB;
+    String id;
+    TextView fridgeTempTV;
+    TextView freezerTempTV;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fridge_details);
 
-        final String id = getIntent().getStringExtra("id");
+
+        String name = getIntent().getStringExtra("name");
+
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(getString(R.string.fridge));
+            actionBar.setTitle(name);
+
         }
 
+        id = getIntent().getStringExtra("id");
+        freezerSB = findViewById(R.id.freezer_seek);
+        fridgeSB = findViewById(R.id.fridge_seek);
+        fridgeTempTV = findViewById(R.id.fridge_temp);
+        freezerTempTV = findViewById(R.id.freezer_temp);
+        spinner = findViewById(R.id.fridge_mode_spinner);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0){
+                    freezerSB.setProgress(-13+20);
+                    fridgeSB.setProgress(4-2);
+
+                    freezerTempTV.setText(String.format("%d",-13));
+                    fridgeTempTV.setText(String.format("%d",4));
+                }
+                else if(position ==1){
+                    freezerSB.setProgress(-8+20);
+                    fridgeSB.setProgress(7-2);
+
+                    freezerTempTV.setText(String.format("%d",-8));
+                    fridgeTempTV.setText(String.format("%d",7));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
-        View fridgeSeekV = findViewById(R.id.fridge_seek);
-        final SeekBar fridgeSB = (SeekBar) fridgeSeekV;
         fridgeSB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int fridgeValue = progress;
-                TextView fridgeTempTV = findViewById(R.id.fridge_temp);
                 fridgeTempTV.setText(String.valueOf(fridgeValue+2));
-                spinner = findViewById(R.id.fridge_mode_spinner);
                 spinner.setSelection(2);
             }
 
@@ -67,15 +107,11 @@ public class FridgeDetails extends AppCompatActivity {
             }
         });
 
-        View freezerSeekV = findViewById(R.id.freezer_seek);
-        final SeekBar freezerSB = (SeekBar) freezerSeekV;
         freezerSB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int freezerValue = progress;
-                TextView fridgeTempTV = findViewById(R.id.freezer_temp);
-                fridgeTempTV.setText(String.valueOf(freezerValue-20));
-                spinner = findViewById(R.id.fridge_mode_spinner);
+                freezerTempTV.setText(String.valueOf(freezerValue-20));
                 spinner.setSelection(2);
             }
 
@@ -94,11 +130,14 @@ public class FridgeDetails extends AppCompatActivity {
         Api.getInstance(getApplicationContext()).getDeviceStatus(id, new Response.Listener<Map<String,String>>() {
             @Override
             public void onResponse(Map<String,String> response) {
-                freezerSB.setProgress(Integer.parseInt(response.get("freezerTemperature")));
-                fridgeSB.setProgress(Integer.parseInt(response.get("temperature")));
+                freezerSB.setProgress(Integer.parseInt(response.get("freezerTemperature"))+20);
+                fridgeSB.setProgress(Integer.parseInt(response.get("temperature"))-2);
                 String temp=response.get("mode");
+                freezerTempTV.setText(response.get("freezerTemperature"));
+                fridgeTempTV.setText(response.get("temperature"));
 
-                spinner.setSelection((temp.compareTo("default")==0)?2:((temp.compareTo("Party")==0)?0:1));
+
+                spinner.setSelection((temp.compareTo("default")==0)?2:((temp.compareTo("party")==0)?0:1));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -114,10 +153,16 @@ public class FridgeDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Api.getInstance(getApplicationContext()).setDeviceStatusInteger(id,"setFreezerTemperature",new ArrayList<Integer>(freezerSB.getProgress()), new Response.Listener<String>() {
+                ArrayList<Integer> arr = new ArrayList<>();
+                arr.add(freezerSB.getProgress()-20);
+
+
+                Api.getInstance(getApplicationContext()).setDeviceStatusInteger(id,"setFreezerTemperature",arr, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Api.getInstance(getApplicationContext()).setDeviceStatusInteger(id, "setTemperature",new ArrayList<Integer>(fridgeSB.getProgress()), new Response.Listener<String>() {
+                        ArrayList<Integer> arr = new ArrayList<>();
+                        arr.add(fridgeSB.getProgress()+2);
+                        Api.getInstance(getApplicationContext()).setDeviceStatusInteger(id, "setTemperature",arr, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
                                 List<String> lista=new ArrayList<String>();
@@ -179,6 +224,26 @@ public class FridgeDetails extends AppCompatActivity {
         String text ;
         if (response != null)
             text = response.getDescription().get(0);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.history_menu,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.history:
+                Intent intent = new Intent(FridgeDetails.this,DeviceHistory.class);
+                //startActivityForResult(intent,1);
+                //Log.i("DeviceLogs","Menu")
+                intent.putExtra("id",id);
+                startActivity(intent);
+                //finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
 
