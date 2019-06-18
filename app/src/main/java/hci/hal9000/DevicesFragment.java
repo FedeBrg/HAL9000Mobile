@@ -52,6 +52,7 @@ public class DevicesFragment extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), CreateDevice.class);
                     startActivity(intent);
+                    onHiddenChanged(false);
                 }
             });
         }

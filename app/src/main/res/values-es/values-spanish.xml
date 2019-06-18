@@ -32,7 +32,7 @@
     <string name="voice">Voz</string>
     <string name="routines">Rutinas</string>
     <string name="devices">Dispositivos</string>
-    <string name="room_name">Nombre Habitacion:</string>
+    <string name="room_name">Nombre habitación:</string>
     <string name="link_devices">Enlazar dispositivo</string>
     <string name="device_type">Tipo de dispositivo</string>
     <string name="device_name">Nombre dispositivo:</string>
@@ -88,7 +88,9 @@
     <string name="mode">Modo:</string>
     <string name="intensity">Intensidad:</string>
     <string name="exec">Ejecutar</string>
-    <string name="createnewroom">Crear nuevo dispositivo</string>
+    <string name="createnewroom">Crear nueva habitación</string>
+    <string name="createnewdevice">Crear nuevo dispositivo</string>
+
     <string name="takephoto">Tomar una foto</string>
     <string name="fridge">Heladera</string>
     <string name="oven">Oven</string>

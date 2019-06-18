@@ -56,7 +56,7 @@ public class CreateDevice extends AppCompatActivity {
 
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(getString(R.string.createnewroom));
+            actionBar.setTitle(getString(R.string.createnewdevice));
         }
 
 

@@ -11,6 +11,7 @@ import android.provider.Settings;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -32,6 +33,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -49,10 +51,15 @@ public class VoiceFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle bundle){
         super.onActivityCreated(bundle);
-        final EditText editText = getActivity().findViewById(R.id.editText);
+        final EditText editText = getActivity().findViewById(R.id.editText_voice);
 
         final SpeechRecognizer mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(getContext());
         final Intent mSpeechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+        getActivity().getWindow().getDecorView().setBackgroundResource(R.drawable.white_back);
+
+
+
         mSpeechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         mSpeechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
@@ -113,7 +120,7 @@ public class VoiceFragment extends Fragment {
             }
         });
 
-        getActivity().findViewById(R.id.button).setOnTouchListener(new View.OnTouchListener() {
+        getActivity().findViewById(R.id.button_voice).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()) {
@@ -130,6 +137,8 @@ public class VoiceFragment extends Fragment {
                                 editText.setHint(R.string.listening);
                             }
                             else{
+                                requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO},
+                                        1);
                                 editText.setText("");
                                 editText.setHint(R.string.microphone);
                             }

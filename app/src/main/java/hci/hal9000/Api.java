@@ -62,6 +62,7 @@ public class Api {
     }
 
     public String getRooms(Response.Listener<ArrayList<Room>> listener, Response.ErrorListener errorListener){
+        Log.i("TABLET",String.format("EL url es: %s",URL));
         String url = URL + "rooms/";
         GsonRequest<Object,ArrayList<Room>> request = new GsonRequest<>(Request.Method.GET,url,null,"rooms",new TypeToken<ArrayList<Room>>(){}, null, listener,errorListener);
         String uuid = UUID.randomUUID().toString();
