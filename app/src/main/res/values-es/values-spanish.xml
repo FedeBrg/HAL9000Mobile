@@ -80,7 +80,6 @@
     <string name="done">Hecho!</string>
     <string name="pick_icon">Seleccionar icono</string>
     <string name="temperature">Temperatura:</string>
-    <string name="grillMode">Modo Parrilla</string>
     <string name="convectionMode">Modo Conveccion</string>
     <string name="verticalTilt">Inclinacion vertical:</string>
     <string name="horizontalTilt">Inclinacion horizontal:</string>
@@ -95,9 +94,9 @@
     <string name="exec">Ejecutar</string>
     <string name="createnewroom">Crear nueva habitación</string>
     <string name="createnewdevice">Crear nuevo dispositivo</string>
-    <string name="heatSourceT">Fuente de calor:</string>
     <string name="convMode">Modo de convección:</string>
     <string name="grillModeT">Modo grill:</string>
+    <string name="heatSourceT">Fuente de calor: </string>
 
 
 
