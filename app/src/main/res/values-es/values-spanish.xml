@@ -37,6 +37,12 @@
     <string name="device_type">Tipo de dispositivo</string>
     <string name="device_name">Nombre dispositivo:</string>
     <string name="link_to_room">Enlazar a habitación</string>
+    <string name="setMode">Establecer modo:</string>
+    <string name="fanSpeed">Establecer velocidad del ventilador:</string>
+    <string name="fridgeTemperature">Temperatura de la heladera:</string>
+    <string name="freezerTemperature">Temperatura del freezer: </string>
+
+
 
     <string-array name="heatSource">
         <item>Convencional</item>
@@ -76,20 +82,25 @@
     <string name="temperature">Temperatura:</string>
     <string name="grillMode">Modo Parrilla</string>
     <string name="convectionMode">Modo Conveccion</string>
-    <string name="heatSource">Fuente de Calor</string>
     <string name="verticalTilt">Inclinacion vertical:</string>
     <string name="horizontalTilt">Inclinacion horizontal:</string>
     <string name="open">Abrir</string>
     <string name="close">Cerrar</string>
     <string name="progress">Progreso</string>
     <string name="closed">Cerrado</string>
-    <string name="locked">Bloqueado</string>
-    <string name="unlocked">Desbloqueado</string>
+    <string name="locked">Trabada</string>
+    <string name="unlocked">Destrabada</string>
     <string name="mode">Modo:</string>
     <string name="intensity">Intensidad:</string>
     <string name="exec">Ejecutar</string>
     <string name="createnewroom">Crear nueva habitación</string>
     <string name="createnewdevice">Crear nuevo dispositivo</string>
+    <string name="heatSourceT">Fuente de calor:</string>
+    <string name="convMode">Modo de convección:</string>
+    <string name="grillModeT">Modo grill:</string>
+
+
+
 
     <string name="takephoto">Tomar una foto</string>
     <string name="fridge">Heladera</string>

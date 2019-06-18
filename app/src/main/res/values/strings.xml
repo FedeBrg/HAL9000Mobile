@@ -35,10 +35,12 @@
     <string name="done">Done!</string>
     <string name="pick_icon">Pick an icon</string>
     <string name="temperature">Temperature:</string>
-    <string name="grillMode">Grill Mode</string>
+    <string name="grillModeT">Grill Mode</string>
     <string name="convectionMode">Convection Mode</string>
-    <string name="heatSource">Heat Source</string>
+    <string name="heatSourceT">Heat Source</string>
     <string name="verticalTilt">Set vertical blades tilt:</string>
+    <string name="setMode">Set mode:</string>
+    <string name="fanSpeed">Set fan speed:</string>
     <string name="horizontalTilt">Set horizontal blades tilt:</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -77,4 +79,9 @@
     <string name="listening">Listening...</string>
     <string name="microphone">You cannot be listened if you do not give us permission!</string>
     <string name="helpSound">Hold down the button to speak</string>
+    <string name="fridgeTemperature">Fridge temperature:</string>
+    <string name="freezerTemperature">Freezer temperature:</string>
+    <string name="convMode">Convection Mode: </string>
+
 </resources>
+
